@@ -5,8 +5,7 @@ module.exports = {
     commonjs: true,
     browser: true,
     es6: true,
-    jest: true,
-    'vue/setup-compiler-macros': true
+    jest: true
   },
   extends: [
     'eslint:recommended',
