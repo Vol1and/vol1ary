@@ -2,10 +2,11 @@
     @apply px-20 md:px-30 py-4 lg:py-6 t-p2 rounded-[6px] transition;
 
     &--primary {
-         @apply text-white bg-primary hover:bg-primary/90;
+         @apply text-white bg-primary hover:bg-primary/90 active:bg-black;
     }
     &--secondary {
-         @apply text-primary bg-white border-primary/50  border-[0.5px] hover:bg-primary/10;
+         @apply text-primary bg-white active:bg-primary/30
+         border-primary/50 border-[0.5px] hover:bg-primary/10;
      }
 
 }
