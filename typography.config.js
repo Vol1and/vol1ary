@@ -1,29 +1,10 @@
 const plugin = require('tailwindcss/plugin')
 
-/**
- * TODO: Идеально было бы сделать такую структуру со связкой брейкпоинтов
- */
-// addComponents({
-//   ttl: {
-//     fontFamily: theme('fontFamily.title'),
-//     fontWeight: theme('fontWeight.semibold'),
-//     letterSpacing: theme('letterSpacing.2'),
-//     lineHeight: {
-//       DEFAULT: theme('lineHeight.130'),
-//       lg: theme('lineHeight.120')
-//     },
-//     fontSize: {
-//       DEFAULT: theme('fontSize.30'),
-//       md: theme('fontSize.60'),
-//       lg: theme('fontSize.100')
-//     }
-//   }
-// }
-
 module.exports = plugin(function ({ addComponents, theme }) {
   addComponents({
     /* Style Title */
     '.ttl': {
+      color: theme('colors.black'),
       fontFamily: theme('fontFamily.title'),
       fontWeight: theme('fontWeight.semibold'),
       lineHeight: theme('lineHeight.130'),
@@ -38,6 +19,7 @@ module.exports = plugin(function ({ addComponents, theme }) {
       }
     },
     '.t-article': {
+      color: theme('colors.black'),
       fontFamily: theme('fontFamily.title'),
       fontWeight: theme('fontWeight.semibold'),
       lineHeight: theme('lineHeight.130'),
@@ -52,6 +34,7 @@ module.exports = plugin(function ({ addComponents, theme }) {
       }
     },
     '.t-h1': {
+      color: theme('colors.black'),
       fontFamily: theme('fontFamily.title'),
       fontWeight: theme('fontWeight.semibold'),
       lineHeight: theme('lineHeight.130'),
@@ -65,6 +48,7 @@ module.exports = plugin(function ({ addComponents, theme }) {
       }
     },
     '.t-h2': {
+      color: theme('colors.black'),
       fontFamily: theme('fontFamily.title'),
       fontWeight: theme('fontWeight.semibold'),
       lineHeight: theme('lineHeight.130'),
@@ -78,6 +62,7 @@ module.exports = plugin(function ({ addComponents, theme }) {
       }
     },
     '.t-h3': {
+      color: theme('colors.black'),
       fontFamily: theme('fontFamily.title'),
       fontWeight: theme('fontWeight.semibold'),
       lineHeight: theme('lineHeight.130'),
@@ -91,6 +76,7 @@ module.exports = plugin(function ({ addComponents, theme }) {
       }
     },
     '.t-h4': {
+      color: theme('colors.black'),
       fontFamily: theme('fontFamily.title'),
       fontWeight: theme('fontWeight.semibold'),
       lineHeight: theme('lineHeight.130'),
@@ -104,6 +90,7 @@ module.exports = plugin(function ({ addComponents, theme }) {
       }
     },
     '.t-h4-capital': {
+      color: theme('colors.black'),
       fontFamily: theme('fontFamily.title'),
       fontWeight: theme('fontWeight.semibold'),
       lineHeight: theme('lineHeight.130'),

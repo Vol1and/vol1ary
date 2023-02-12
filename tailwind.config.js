@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    './renderer/**/*.{vue,js,ts,jsx,tsx}',
-    './src/**/*.{vue,js,ts,jsx,tsx}'
+    './renderer/**/*.{styled.ts, js,ts,jsx,tsx}',
+    './src/**/*.{styled.ts, js,ts,jsx,tsx}'
   ],
   theme: {
     container: {
@@ -29,28 +29,18 @@ module.exports = {
       inherit: 'inherit',
       current: 'currentColor',
       transparent: 'transparent',
+
       white: '#fff',
-      black: '#505050',
-      green: '#09AD67',
-      red: '#D34440',
+      black: '#172a3a',
+      primary: '#305680',
+      green: '#09bc8a',
+      red: '#f02d3d',
       grey: 'rgba(80, 80, 80, 0.5)',
       additional: {
-        1: '#89DA5D',
-        2: '#2B7B73',
-        3: '#0075AD',
+        1: '#f2edeb',
+        2: '#f1fffa',
+        3: '#004346',
         4: '#99C8DE'
-      },
-      auxiliary: {
-        1: '#A3D6C0',
-        2: '#D0E9DD',
-        3: '#E7E89D',
-        4: '#F3F4CE',
-        5: '#99ACB5',
-        6: '#CCD6DA',
-        7: '#B599FD',
-        8: '#DACCFE',
-        9: '#F3D1B9',
-        10: '#F9E8DC'
       }
     },
     spacing: {

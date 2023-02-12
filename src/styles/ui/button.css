@@ -1,0 +1,11 @@
+.bbutton {
+    @apply px-20 md:px-30 py-4 lg:py-6 t-p2 rounded-[6px] transition;
+
+    &--primary {
+         @apply text-white bg-primary hover:bg-primary/90;
+    }
+    &--secondary {
+         @apply text-primary bg-white border-primary/50  border-[0.5px] hover:bg-primary/10;
+     }
+
+}

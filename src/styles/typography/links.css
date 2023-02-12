@@ -1,0 +1,67 @@
+/* Style Title */
+@tailwind base;
+@layer base {
+  .link {
+    @apply inline pb-1 border-b cursor-pointer;
+    @apply border-primary border-opacity-50;
+    @apply active:!border-opacity-0;
+
+    &:hover {
+      @apply text-green border-green border-opacity-100;
+    }
+
+    &.disabled {
+      @apply text-primary/40 border-primary !border-opacity-40 cursor-default;
+    }
+
+    &.link-icon {
+      @apply !border-none !pb-0;
+    }
+
+    &.link-button {
+      @apply inline-block border-dashed active:!border-opacity-100 select-none;
+    }
+
+    /* Colors */
+    &.link-white {
+      @apply border-white text-white border-opacity-50;
+      @apply hover:text-white hover:border-white hover:border-opacity-100;
+    }
+
+    &.link-gray {
+      @apply border-auxiliary-5 hover:border-green;
+      @apply border-opacity-50 hover:border-opacity-100;
+    }
+
+    &.link-green {
+      @apply border-green text-green border-opacity-50;
+      @apply hover:text-green hover:border-green hover:border-opacity-100;
+    }
+  }
+
+  .nested-link {
+    &:hover {
+      .link {
+        @apply text-green border-green border-opacity-100;
+      }
+
+      .link-gray {
+        @apply border-green border-opacity-100;
+      }
+
+      .link-white {
+        @apply text-white border-white border-opacity-100;
+      }
+
+      .link-green {
+        @apply border-green border-opacity-100;
+      }
+    }
+
+    &:active {
+      .link {
+        @apply !border-opacity-0;
+      }
+    }
+  }
+}

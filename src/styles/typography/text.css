@@ -1,0 +1,39 @@
+@tailwind base;
+@layer base {
+  /* Style Title */
+  h1 {
+    @apply t-h1;
+  }
+
+  h2 {
+    @apply t-h2;
+  }
+
+  h3 {
+    @apply t-h3;
+  }
+
+  h4 {
+    @apply t-h4;
+
+    &.capital {
+      @apply t-h4-capital;
+    }
+  }
+
+  /* Style Paragraph */
+  p {
+    @apply t-p1;
+    @apply mb-10 lg:mb-30 last:mb-0;
+
+    &.medium {
+      @apply t-p2;
+      @apply mb-6 lg:mb-14 last:mb-0;
+    }
+
+    &.small {
+      @apply t-p3;
+      @apply mb-4 lg:mb-10 last:mb-0;
+    }
+  }
+}

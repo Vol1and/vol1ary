@@ -9,7 +9,10 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'prettier'
+    'prettier',
+    "next/core-web-vitals",
+    "react-app",
+    "react-app/jest"
   ],
   plugins: ['@typescript-eslint', 'prettier'],
   parserOptions: {
