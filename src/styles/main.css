@@ -2,3 +2,7 @@
 @import './typography/links.css';
 @import './tailwind.css';
 @import "ui/button.css";
+
+body {
+    @apply bg-additional-2;
+}

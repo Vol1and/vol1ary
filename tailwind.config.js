@@ -38,7 +38,7 @@ module.exports = {
       grey: 'rgba(80, 80, 80, 0.5)',
       additional: {
         1: '#f2edeb',
-        2: '#f1fffa',
+        2: '#f2fcf8',
         3: '#004346',
         4: '#99C8DE'
       }
