@@ -1,0 +1,7 @@
+.b-input-group {
+    @apply border-primary/70 border-[1px] focus:border-primary hover:border-primary
+    md:py-2 lg:py-4 rounded-[6px] bg-white px-8;
+}
+.b-input {
+    @apply outline-none t-p2 text-black placeholder-additional-3/30;
+}

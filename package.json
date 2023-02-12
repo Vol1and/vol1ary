@@ -28,8 +28,5 @@
     "start": "next start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "tailwind-styled-components": "^2.2.0"
   }
 }

@@ -1,4 +1,4 @@
-.bbutton {
+.b-button {
     @apply px-20 md:px-30 py-4 lg:py-6 t-p2 rounded-[6px] transition;
 
     &--primary {

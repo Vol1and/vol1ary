@@ -22,18 +22,18 @@ describe('BButton', () =>{
   test('adds disabled class if disabled', () => {
     render(<BButton disabled>button text</BButton>);
     const linkElement = screen.getByText(/button text/i);
-    expect(linkElement.className).toContain('bbutton--disabled');
+    expect(linkElement.className).toContain('b-button--disabled');
   });
 
   test('adds variant class correctly', () => {
     render(<BButton>button text</BButton>);
     let linkElement = screen.getByText(/button text/i);
-    expect(linkElement.className).toContain('bbutton--primary');
+    expect(linkElement.className).toContain('b-button--primary');
 
     cleanup()
     render(<BButton variant={'secondary'} >button text</BButton>);
     linkElement = screen.getByText(/button text/i);
-    expect(linkElement.className).toContain('bbutton--secondary');
+    expect(linkElement.className).toContain('b-button--secondary');
   });
 })
 

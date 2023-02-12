@@ -9,17 +9,17 @@ interface Props {
 const BButton: React.FC<Props> = (props) => {
 
     const isDisabled = useMemo(() => {
-        return `${props.disabled ? 'bbutton--disabled': ''}`
+        return `${props.disabled ? 'b-button--disabled': ''}`
         }, [props.disabled]);
 
 
     const buttonVariant = useMemo(() => {
-        return `bbutton--${props.variant}`
+        return `b-button--${props.variant}`
     }, [props.variant]);
 
 
     return (
-        <button className={`bbutton ${isDisabled} ${buttonVariant}`} disabled={props.disabled} >
+        <button className={`b-button ${isDisabled} ${buttonVariant}`} disabled={props.disabled} >
             {props.children}
         </button>
     )

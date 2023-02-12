@@ -10,12 +10,14 @@ const BInput = <T extends FieldValues>(props: Props<T>) => {
     const {field} = useController(props);
 
     return (
-        <input
+        <div className={`b-input-group`}>
+            <input
             {...field}
             className={`b-input`}
             disabled={props.disabled}
             placeholder={props.placeholder}
         />
+        </div>
     )
 }
 
