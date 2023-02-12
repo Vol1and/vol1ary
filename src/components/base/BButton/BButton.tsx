@@ -6,23 +6,27 @@ interface Props {
     variant?: 'primary' | 'secondary'
 }
 
-const BButton: React.FC<Props> = ({children, disabled = false, variant = 'primary'}) => {
+const BButton: React.FC<Props> = (props) => {
 
     const isDisabled = useMemo(() => {
-        return `${disabled ? 'bbutton--disabled': ''}`
-        }, [disabled]);
+        return `${props.disabled ? 'bbutton--disabled': ''}`
+        }, [props.disabled]);
 
 
     const buttonVariant = useMemo(() => {
-        return `bbutton--${variant}`
-    }, [variant]);
+        return `bbutton--${props.variant}`
+    }, [props.variant]);
 
 
     return (
-        <button className={`bbutton ${isDisabled} ${buttonVariant}`} disabled={disabled} >
-            {children}
+        <button className={`bbutton ${isDisabled} ${buttonVariant}`} disabled={props.disabled} >
+            {props.children}
         </button>
     )
+}
+BButton.defaultProps = {
+    disabled: false,
+    variant: 'primary'
 }
 
 export default BButton;

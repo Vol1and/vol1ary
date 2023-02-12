@@ -1,29 +1,27 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
+import {FieldValues, useController, UseControllerProps} from "react-hook-form";
 
-interface Props {
+interface Props<T extends FieldValues> extends UseControllerProps<T> {
     disabled?: boolean
     placeholder?: string
-    value?: string
-    onChange?: (val: string) => void
 }
 
-const BInput: React.FC<Props> = ({disabled = false, placeholder= '', onChange, value =''}) => {
-
-    const emitValue = (el: ChangeEvent<HTMLInputElement>) => {
-        if(onChange) {
-            onChange(el.target.value)
-        }
-    }
+const BInput = <T extends FieldValues>(props: Props<T>) => {
+    const {field} = useController(props);
 
     return (
         <input
-            value={value}
+            {...field}
             className={`b-input`}
-            disabled={disabled}
-            placeholder={placeholder}
-            onChange={emitValue}
+            disabled={props.disabled}
+            placeholder={props.placeholder}
         />
     )
+}
+
+BInput.defaultProps = {
+    disabled: false,
+    placeholder: ''
 }
 
 export default BInput;

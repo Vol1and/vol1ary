@@ -1,29 +1,46 @@
-import React, {useState} from 'react';
-import {render, screen, cleanup, fireEvent} from '@testing-library/react';
-import BButton from "./BInput";
+import {render, screen, fireEvent, renderHook} from '@testing-library/react';
 import BInput from "./BInput";
+import {Control, useForm, UseFormReturn} from "react-hook-form";
 
 
+interface FormValues {
+    name: string
+}
 
 describe('BInput', () =>{
+    let control: Control<{name: any}, any>;
+    let form: UseFormReturn<FormValues, any>;
+    beforeEach(() => {
+        const {result} = renderHook(() =>  {
+            return useForm<FormValues>({
+                mode: "onChange",
+                values: {
+                    name: ''
+                }
+            });
+        })
+        //@ts-ignore
+        control = result.current.control
+        form = result.current
+    })
+
     test('renders input', () => {
-        render(<BInput />);
+        render(<BInput control={control} name='name' />);
         const input = screen.getByPlaceholderText('');
         expect(input).toBeInTheDocument();
     });
     test('displays placeholder', () => {
-        render(<BInput placeholder='bruh man' />);
+        render(<BInput  control={control} name='name' placeholder='bruh man' />);
         const input = screen.getByPlaceholderText('bruh man');
         expect(input).toBeInTheDocument();
     });
     test('changes passed modelValue', () => {
-        let value = 'Валерий'
-        render(<BInput value={value} onChange={(val) => value = val} />);
+        render(<BInput  control={control} name='name' />);
         const input: HTMLInputElement = screen.getByPlaceholderText('');
 
-        expect(input).toBeInTheDocument();
         fireEvent.change(input, { target: { value: 'Сергей' } });
-        expect(value).toBe('Сергей');
+
+        expect(form.getValues('name')).toBe('Сергей');
     });
 })
 
