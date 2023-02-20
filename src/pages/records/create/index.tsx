@@ -1,7 +1,8 @@
 import RecordCreateForm from "@/components/form/RecordCreateForm";
 
-export default () => {
+const RecordCreate = () => {
     return (
         <RecordCreateForm />
     )
 }
+export default RecordCreate
