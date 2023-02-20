@@ -3,7 +3,9 @@
 @import './tailwind.css';
 @import "ui/button.css";
 @import "ui/input.css";
+@import 'layout.css';
+@import 'form.css';
 
 body {
-    @apply bg-additional-2;
+    @apply bg-additional-2/60;
 }

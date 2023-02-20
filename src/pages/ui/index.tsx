@@ -17,7 +17,7 @@ const UiKIt = () => {
                 <BButton variant="secondary">Secondary button</BButton>
             </div>
             <h1 className="t-h1">Инпуты</h1>
-            <div className="flex gap-20">
+            <div className="flex flex-col gap-20">
                 <BInput control={control} name="name" placeholder="Плейсхолдер" />
                 <BInput control={control} name="name"/>
             </div>

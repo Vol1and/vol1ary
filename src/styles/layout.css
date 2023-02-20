@@ -1,0 +1,19 @@
+.body {
+    --h-header: 50px;
+    --h-header-md: 76px;
+    --h-header-lg: 94px;
+    @apply h-full pt-[var(--h-header)] md:pt-[var(--h-header-md)] lg:pt-[var(--h-header-lg)];
+}
+
+.navbar {
+    --h-header: 50px;
+    --h-header-md: 76px;
+    --h-header-lg: 94px;
+    @apply w-full select-none fixed bg-white border-b-[1px] border-additional-1
+    h-[var(--h-header)] md:h-[var(--h-header-md)] lg:h-[var(--h-header-lg)];
+}
+
+.sidebar {
+    @apply h-full select-none fixed bg-white z-[2]
+    w-[50px] lg:w-[250px] border-r-[1px] border-additional-1;
+}

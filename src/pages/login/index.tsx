@@ -1,5 +1,6 @@
-export default () => {
+ const Page =  () => {
     return (
         <h1>Неебаться логинка</h1>
     )
 }
+ export default Page
