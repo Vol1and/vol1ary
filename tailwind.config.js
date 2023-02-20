@@ -40,7 +40,8 @@ module.exports = {
         1: '#f2edeb',
         2: '#f2fcf8',
         3: '#004346',
-        4: '#99C8DE'
+        4: '#99C8DE',
+        5: '#fdfeff'
       }
     },
     spacing: {

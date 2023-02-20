@@ -1,32 +1,20 @@
-import React, {useMemo} from "react";
+import React, {ButtonHTMLAttributes} from "react";
+import classNames from "classnames";
 
-interface Props {
-    children?: React.ReactNode;
-    disabled?: boolean
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     variant?: 'primary' | 'secondary'
+
 }
 
-const BButton: React.FC<Props> = (props) => {
+const BButton: React.FC<ButtonProps> = ({variant = 'primary', className, ...props  }) => {
 
-    const isDisabled = useMemo(() => {
-        return `${props.disabled ? 'b-button--disabled': ''}`
-        }, [props.disabled]);
-
-
-    const buttonVariant = useMemo(() => {
-        return `b-button--${props.variant}`
-    }, [props.variant]);
-
+    const classes = classNames('b-button', { 'b-button--disabled': props.disabled}, `b-button--${variant}`);
 
     return (
-        <button className={`b-button ${isDisabled} ${buttonVariant}`} disabled={props.disabled} >
+        <button className={classes} {...props}>
             {props.children}
         </button>
     )
-}
-BButton.defaultProps = {
-    disabled: false,
-    variant: 'primary'
 }
 
 export default BButton;
