@@ -1,19 +1,66 @@
+:root {
+    --h-header: 32px;
+    --h-header-md: 46px;
+    --h-header-lg: 60px;
+}
+
 .body {
-    --h-header: 50px;
-    --h-header-md: 76px;
-    --h-header-lg: 94px;
-    @apply h-full pt-[var(--h-header)] md:pt-[var(--h-header-md)] lg:pt-[var(--h-header-lg)];
+    @apply h-full mb-24 md:mb-40 lg:mb-80
+    pt-[calc(var(--h-header)+24px)] md:pt-[calc(var(--h-header-md)+40px)] lg:pt-[calc(var(--h-header-lg)+80px)]
 }
 
 .navbar {
-    --h-header: 50px;
-    --h-header-md: 76px;
-    --h-header-lg: 94px;
-    @apply w-full select-none fixed bg-white border-b-[1px] border-additional-1
-    h-[var(--h-header)] md:h-[var(--h-header-md)] lg:h-[var(--h-header-lg)];
+    @apply w-full select-none fixed bg-primary border-b-[1px] border-additional-1 transition
+    h-[var(--h-header)] md:h-[var(--h-header-md)] lg:h-[var(--h-header-lg)] z-[2];
 }
 
 .sidebar {
-    @apply h-full select-none fixed bg-white z-[2]
-    w-[50px] lg:w-[250px] border-r-[1px] border-additional-1;
+    @apply h-full select-none fixed bg-white transition
+    pt-[var(--h-header)] md:pt-[var(--h-header-md)] lg:pt-[var(--h-header-lg)]
+    w-[50px] md:w-[100px] lg:w-[200px] border-r-[1px] border-additional-1;
+
+    &__header {
+        @apply t-h3 ml-8 mb-4 mt-16
+     }
+
+
+    &__item {
+     @apply  py-12 px-12 flex gap-16 items-center t-p2  relative;
+     @apply  border-b-[1px]  border-b-purple;
+
+     &:first-child {
+        @apply border-t-purple border-t-[1px]
+      }
+
+     &-bar {
+      @apply h-54 w-4 bg-primary absolute left-0 top-0;
+      }
+
+     &:hover {
+          @apply bg-primary text-white;
+
+          > .sidebar__item-icon {
+              @apply fill-white;
+          }
+          > .sidebar__item-bar {
+              @apply bg-green
+          }
+      }
+
+     &.active {
+        @apply bg-primary text-white;
+
+        > .sidebar__item-icon {
+            @apply fill-white;
+        }
+      }
+
+     &-icon {
+        @apply w-20 h-20 ml-8;
+      }
+    }
+}
+
+.form-container {
+    @apply flex justify-center;
 }

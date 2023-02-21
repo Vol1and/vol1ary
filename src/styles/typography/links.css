@@ -29,7 +29,7 @@
     }
 
     &.link-gray {
-      @apply border-auxiliary-5 hover:border-green;
+      @apply border-additional-5 hover:border-green;
       @apply border-opacity-50 hover:border-opacity-100;
     }
 

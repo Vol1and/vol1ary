@@ -32,13 +32,15 @@ module.exports = {
 
       white: '#fff',
       black: '#172a3a',
-      primary: '#305680',
+      primary: '#271460FF',
       green: '#09bc8a',
       red: '#f02d3d',
+      purple: '#dcd6e7',
+      purpleLight: '#73649e',
       grey: 'rgba(80, 80, 80, 0.5)',
       additional: {
         1: '#f2edeb',
-        2: '#f2fcf8',
+        2: '#fbfafc',
         3: '#004346',
         4: '#99C8DE',
         5: '#fdfeff'
