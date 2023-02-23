@@ -1,54 +1,23 @@
-import {ROUTE} from "@/pages/routes";
 import SidebarLink from "@/components/layout/Sidebar/SidebarLink/SidebarLink";
-import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import {SIDEBAR_TREE} from "@/config/layout.config";
+import {ISidebarTree} from "@/types";
+import React from "react";
 
-interface ISidebarTree {
-    title: string
-    links: {
-        link: string
-        icon: IconProp
-        label: string
-    }[]
+interface Props {
+   trees?: ISidebarTree[]
 }
 
-const Sidebar = () => {
-    const SIDEBAR_TREE: ISidebarTree[] = [
-        {
-            title: 'Главное',
-            links: [
-                {icon: 'list', label:'Записи', link: ROUTE.RECORDS.slug},
-                {icon: 'pen', label:'Привычки', link: ROUTE.HABITS.slug},
-                {icon: 'signal', label:'Спринты', link: ROUTE.SPRINTS.slug},
-            ]
-        },
-        {
-            title: 'Главное',
-            links: [
-                {icon: 'list', label:'Записи', link: ROUTE.RECORDS.slug},
-                {icon: 'pen', label:'Привычки', link: ROUTE.HABITS.slug},
-                {icon: 'signal', label:'Спринты', link: ROUTE.SPRINTS.slug},
-            ]
-        },
-        {
-            title: 'Главное',
-            links: [
-                {icon: 'list', label:'Записи', link: ROUTE.RECORDS.slug},
-                {icon: 'pen', label:'Привычки', link: ROUTE.HABITS.slug},
-                {icon: 'signal', label:'Спринты', link: ROUTE.SPRINTS.slug},
-            ]
-        },
-    ]
-
+const Sidebar: React.FC<Props> = ({trees= SIDEBAR_TREE}) => {
     return (
         <div className="sidebar">
             {
-                SIDEBAR_TREE.map((el) => (
-                    <div>
+                trees.map((el, idx) => (
+                    <div key={idx}>
                         <h3 className="sidebar__header">{el.title}</h3>
                         <div className="sidebar__item-container">
                             {
-                            el.links.map((link) => (
-                                <SidebarLink link={link.link} icon={link.icon}>{link.label}</SidebarLink>
+                            el.links.map((link, idx) => (
+                                <SidebarLink key={idx} link={link.link} icon={link.icon}>{link.label}</SidebarLink>
                             ))
                             }
                         </div>

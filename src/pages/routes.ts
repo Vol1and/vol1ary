@@ -10,7 +10,7 @@ export interface RouteData {
 export const ROUTE: Record<Uppercase<RouteKey>, RouteData> = {
   RECORDS: {
     title: 'Записи',
-    slug: '/record'
+    slug: '/records'
   },
   HABITS: {
     title: 'Привычки',

@@ -32,6 +32,15 @@
     "build": "next build",
     "start": "next start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage --collectCoverageFrom=src/**/*.tsx"
+  },
+  "devDependencies": {
+    "next-router-mock": "^0.9.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
   }
 }
