@@ -31,7 +31,7 @@ service.interceptors.request.use(
 // Response interceptors
 service.interceptors.response.use(
   (response: AxiosResponse<Api<unknown> | ApiError>) => {
-    if (response.data.status !== 'success') {
+    if (response.status !== 200) {
       const error = response as AxiosResponse<ApiError>
       return showErrorResponse(error)
     }

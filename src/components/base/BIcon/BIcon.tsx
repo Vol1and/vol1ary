@@ -1,10 +1,16 @@
 import React from "react";
-import {FontAwesomeIcon, FontAwesomeIconProps} from "@fortawesome/react-fontawesome";
+import {IconName} from "@fortawesome/free-regular-svg-icons";
+import {FontAwesomeIconProps} from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {mapIcons} from "@/utils/icons";
 
-const BIcon: React.FC<FontAwesomeIconProps> = (props) => {
-    return (
-        <FontAwesomeIcon  type={'layerGroup'} {...props}  />
-    )
+
+interface Props  extends Omit<FontAwesomeIconProps, 'icon'> {
+    name: IconName
+}
+
+const BIcon: React.FC<Props> = ({name, ...props}) => {
+    return <FontAwesomeIcon icon={mapIcons(name)} {...props}  />
 }
 
 export default BIcon;

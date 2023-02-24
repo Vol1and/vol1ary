@@ -3,12 +3,6 @@ import Head from "next/head";
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Sidebar from "@/components/layout/Sidebar/Sidebar";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {faCoffee, faCheck, faList, faPen, faSignal} from '@fortawesome/free-solid-svg-icons'
-
-library.add(faCoffee, faCheck, faList, faPen, faSignal)
-
-
 function App({ Component, pageProps }) {
     return (<div>
         <Head>

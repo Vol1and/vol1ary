@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 
 const BButton: React.FC<ButtonProps> = ({variant = 'primary', className, ...props  }) => {
 
-    const classes = classNames('b-button', { 'b-button--disabled': props.disabled}, `b-button--${variant}`);
+    const classes = classNames('b-button', { 'b-button--disabled': props.disabled}, `b-button--${variant}`, className);
 
     return (
         <button className={classes} {...props}>
