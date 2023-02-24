@@ -1,0 +1,21 @@
+.b-table {
+    @apply bg-white rounded-[4px] text-primary;
+    box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
+
+    table {
+        @apply w-full;
+    }
+
+    &__header {
+        &-cell {
+             @apply px-16 py-[7px] t-p2 font-semibold border-r border-r-purple border-b border-b-purple;
+         }
+     }
+    &__row {
+        @apply h-48 w-full t-p2;
+
+        &-cell {
+            @apply px-16 py-[7px] border-r border-r-purple border-b border-b-purple;
+         }
+     }
+}

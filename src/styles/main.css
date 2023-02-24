@@ -3,6 +3,7 @@
 @import './tailwind.css';
 @import "ui/button.css";
 @import "ui/input.css";
+@import "ui/table.css";
 @import 'layout.css';
 @import 'form.css';
 
