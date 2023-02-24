@@ -35,5 +35,11 @@ describe('BButton', () =>{
     linkElement = screen.getByText(/button text/i);
     expect(linkElement.className).toContain('b-button--secondary');
   });
+
+  test('adds rounded class if rounded', () => {
+    render(<BButton rounded>button text</BButton>);
+    let linkElement = screen.getByText(/button text/i);
+    expect(linkElement.className).toContain('b-button--rounded');
+  });
 })
 
