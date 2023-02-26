@@ -1,11 +1,12 @@
-import {IconName} from "@fortawesome/free-regular-svg-icons";
+import {IconName} from "@fortawesome/free-solid-svg-icons";
+import {Dayjs} from "dayjs";
 
 export interface ITableDisplayable {
-    [idx: string]: string | number | Date
+    [idx: string]: string | number | Dayjs
 }
 
 export interface IRecord extends ITableDisplayable {
-    date: string
+    date: Dayjs
     description: string
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {IconName} from "@fortawesome/free-regular-svg-icons";
+import {IconName} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIconProps} from '@fortawesome/react-fontawesome'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {mapIcons} from "@/utils/icons";

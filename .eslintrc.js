@@ -10,7 +10,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'prettier',
-    "next/core-web-vitals",
     "react-app",
     "react-app/jest"
   ],
