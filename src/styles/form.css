@@ -1,3 +1,22 @@
 .card {
   @apply p-16 md:p-24 lg:p-30 bg-white rounded border-primary/20 border-[1px];
+  box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
+}
+
+
+.form {
+
+  &__record {
+   @apply w-[1200px];
+      &-body {
+            @apply flex gap-20 mb-20;
+       }
+
+      &-statuses {
+        @apply w-[300px];
+      }
+      &-textarea {
+        @apply min-h-[56px] h-[250px] w-full;
+       }
+   }
 }

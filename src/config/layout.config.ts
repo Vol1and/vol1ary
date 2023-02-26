@@ -1,4 +1,4 @@
-import {ROUTE} from "@/pages/routes";
+import {ROUTE} from "@/routes";
 import {ISidebarTree} from "@/types";
 
 export const SIDEBAR_TREE: ISidebarTree[] = [

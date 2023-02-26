@@ -1,17 +1,16 @@
 import React from "react";
-import {ITableDisplayable} from "@/types";
 
-export interface ITableColumn {
+export interface ITableColumn<T> {
     label: string
-    key: string
+    value: ((item: T) => string)
 }
 
-interface Props {
-    columns: ITableColumn[]
-    items?: ITableDisplayable[]
+interface Props<T> {
+    columns: ITableColumn<T>[]
+    items?: T[]
 }
 
-const BTable: React.FC<Props> = ({items = [], columns}) => {
+const BTable = <T extends {}>({items = [], columns}: Props<T>) => {
 
     return (
         <div className="b-table">
@@ -19,8 +18,8 @@ const BTable: React.FC<Props> = ({items = [], columns}) => {
                 <thead className="b-table__header">
                 <tr>
                     {
-                        columns.map((el) => (
-                            <th className="b-table__header-cell" key={`header-${el.key}`}>{el.label}</th>
+                        columns.map((el, idx) => (
+                            <th className="b-table__header-cell" key={`header-${idx}`}>{el.label}</th>
                         ))
                     }
                 </tr>
@@ -30,9 +29,9 @@ const BTable: React.FC<Props> = ({items = [], columns}) => {
                     items.map((item, rowIdx) => (
                         <tr key={`row-${rowIdx}`} className="b-table__row">
                             {
-                                columns.map((col) => (
+                                columns.map((col, colIdcx) => (
                                     <td className="b-table__row-cell"
-                                        key={`cell-${rowIdx}-${col.key}`}>{`${item[col.key] || '-'}`}</td>
+                                        key={`cell-${rowIdx}-${colIdcx}`}>{col.value(item) || '-'}</td>
                                 ))
                             }
                         </tr>

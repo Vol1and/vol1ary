@@ -1,7 +1,11 @@
-.b-input-group {
+.b-input-group, .b-textarea {
     @apply border-primary/70 border-[1px] focus:border-primary hover:border-primary
      rounded-[6px] bg-white p-[13px] h-56;
+
+    &:focus {
+         box-shadow: 0 0 0 2px rgb(39, 20, 96 / 10%);
+    }
 }
-.b-input {
+.b-input, .b-textarea {
     @apply outline-none t-p2 text-black placeholder-additional-3/30 w-full;
 }

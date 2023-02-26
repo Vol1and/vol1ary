@@ -1,5 +1,7 @@
 .b-button {
     @apply px-20 md:px-30 py-4 lg:py-6 t-p2 rounded-[6px] transition;
+    box-shadow: 0 3px 5px -1px #0003, 0 5px 8px #00000024, 0 1px 14px #0000001f;
+    transition: box-shadow .3s cubic-bezier(.25,.8,.5,1);
 
     &--rounded {
         @apply h-fit rounded-full p-12;
@@ -12,9 +14,10 @@
     &--primary {
          @apply text-white bg-primary hover:bg-primary/90 active:bg-black;
     }
+
     &--secondary {
          @apply text-primary bg-white active:bg-primary/30
-         border-primary/50 border-[0.5px] hover:bg-primary/10;
+         border-primary/10 border-[0.5px] hover:bg-primary/10;
      }
 
 }

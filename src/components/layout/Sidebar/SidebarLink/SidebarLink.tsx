@@ -3,7 +3,7 @@ import Link from "next/link";
 import BIcon from "../../..//base/BIcon/BIcon";
 import {useRouter} from "next/router";
 import classNames from "classnames";
-import {IconName} from "@fortawesome/free-regular-svg-icons";
+import {IconName} from "@fortawesome/free-solid-svg-icons";
 
 export interface SidebarLinkProps extends PropsWithChildren {
     link: string

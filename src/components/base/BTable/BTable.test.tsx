@@ -1,22 +1,23 @@
 import {render, screen} from '@testing-library/react';
 import BTable, {ITableColumn} from "@/components/base/BTable/BTable";
 import {IRecord} from "@/types";
+import dayjs from "dayjs";
+import {DATE_FORMAT} from "@/config/base.config";
 
 
 describe('BTable', () => {
-    const columns: ITableColumn[] = [
-        {label: 'Хедер 1', key: 'key3'},
-        {label: 'Хедер 2', key: 'key1'},
-        {label: 'Хедер 3', key: 'key2'}
+    const columns: ITableColumn<IRecord>[] = [
+        {label: 'Хедер 1', value: (item) => item.description},
+        {label: 'Хедер 2', value: (item) => item.date.format(DATE_FORMAT)},
     ]
 
     const items: IRecord[] = [
         {
             description: "Сергей Валерьевич 1",
-            date: "2002-02-31T22:00:00.000Z"
+            date: dayjs()
         },
         {
-            date: "2002-01-31T22:00:00.000Z",
+            date: dayjs(),
             description: "Сергей Валерьевич 2",
         }
     ];
@@ -37,7 +38,13 @@ describe('BTable', () => {
     });
 
     test('displays dash if items do not contain needed key', () => {
-        render(<BTable columns={columns} items={items} />);
+
+        const columns2: ITableColumn<IRecord>[] = [
+            {label: 'Хедер 1', value: (item) => ''},
+            {label: 'Хедер 2', value: (item) => ''}
+        ]
+
+        render(<BTable columns={columns2} items={items} />);
 
         const noDataCells = screen.getAllByText(/-/i)
 
@@ -45,18 +52,14 @@ describe('BTable', () => {
     });
 
     test('displays cell data correctly', () => {
-        const columns2: ITableColumn[] = [
-            {label: 'Хедер 1', key: 'description'},
-            {label: 'Хедер 2', key: 'data'}
-        ]
 
-        render(<BTable columns={columns2} items={items} />);
+        render(<BTable columns={columns} items={items} />);
 
         const cells = screen.getByTestId('b-table').querySelectorAll('td')
 
         items.forEach((item, itemIdx) => {
-            columns2.forEach((col, colIdx) => {
-                expect(cells[(itemIdx * columns2.length) + colIdx].textContent).toBe(item[col.key] || '-')
+            columns.forEach((col, colIdx) => {
+                expect(cells[(itemIdx * columns.length) + colIdx].textContent).toBe(col.value(item) || '-')
             })
         })
     });

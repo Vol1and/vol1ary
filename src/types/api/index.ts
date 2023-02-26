@@ -16,3 +16,13 @@ export interface FormResponse {
   result: number
   success: boolean
 }
+
+
+export interface IRecordRaw {
+  description: string
+  date: string
+}
+
+export interface IRecordListResponseRaw {
+  items: IRecordRaw[]
+}

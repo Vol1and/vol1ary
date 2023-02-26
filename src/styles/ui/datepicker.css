@@ -1,0 +1,18 @@
+.b-datepicker {
+    @apply border-primary/70 border-[1px] focus:border-primary hover:border-primary
+    rounded-[6px] bg-white p-[13px] h-56 w-full;
+
+    .ant-picker-input {
+        @apply outline-none;
+        > input {
+            @apply text-primary t-p2 text-black placeholder-additional-3/30 w-full;
+        }
+    }
+
+    .ant-picker-suffix, .ant-picker-clear {
+        @apply w-20 h-20;
+        svg, path {
+            @apply !fill-primary/50 w-20 h-20;
+        }
+    }
+}

@@ -8,7 +8,7 @@
 
     &__header {
         &-cell {
-             @apply px-16 py-[7px] t-p2 font-semibold border-r border-r-purple border-b border-b-purple;
+             @apply px-16 py-10 t-p1 font-semibold border-r border-r-purple border-b border-b-purple;
          }
      }
     &__row {
