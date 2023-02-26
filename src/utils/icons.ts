@@ -4,9 +4,10 @@ import {
     faCross,
     faPen,
     faList,
-    faCalendarPlus
+    faCalendarPlus,
+    faCalendar
 } from "@fortawesome/free-solid-svg-icons";
-import {IconName} from "@fortawesome/free-regular-svg-icons";
+import {IconName} from "@fortawesome/free-solid-svg-icons";
 
 export const mapIcons = (name: IconName): IconDefinition => {
     switch (name) {
@@ -18,6 +19,8 @@ export const mapIcons = (name: IconName): IconDefinition => {
             return faPen;
         case "calendar-plus":
             return faCalendarPlus;
+        case "calendar":
+            return faCalendar;
     }
     return faCross
 }
