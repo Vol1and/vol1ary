@@ -12,7 +12,7 @@
         &.b-button--sm {
            @apply p-6;
            > svg {
-               @apply h-24 w-24;
+               @apply h-20 w-20;
            }
         }
      }

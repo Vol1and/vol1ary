@@ -13,11 +13,12 @@ import TaskPicker from "@/components/tasks/TaskPicker/TaskPicker";
 
 
 
-const RecordCreateForm: React.FC<IRecord> = ({description, date, tasks}) => {
+const RecordForm: React.FC<IRecord> = ({_id, description, date, tasks}) => {
 
-    const {control, register, getValues, handleSubmit} = useForm<IRecord>({
+    const {control, getValues, handleSubmit} = useForm<IRecord>({
         mode: "onBlur",
         values: {
+            _id,
             description,
             date,
             tasks
@@ -32,12 +33,17 @@ const RecordCreateForm: React.FC<IRecord> = ({description, date, tasks}) => {
 
     const submit = async () => {
         try {
-            await api.record.create(getValues())
-            notification.success({message: 'Запись о дне успешно создана'})
+            const record = getValues();
+            if(record._id) {
+                await api.record.update(record)
+                notification.success({message: 'Запись о дне успешно создана'})
+            } else {
+                await api.record.create(record)
+                notification.success({message: 'Запись о дне успешно изменена'})
+            }
             await router.push(ROUTE.RECORDS.slug)
         } catch (e) {
-            notification.error({message: 'Ошибка во время создания уведомления'})
-        } finally {
+            notification.error({message: 'Ошибка во время создания записи'})
         }
     }
 
@@ -67,4 +73,4 @@ const RecordCreateForm: React.FC<IRecord> = ({description, date, tasks}) => {
     )
 }
 
-export default RecordCreateForm
+export default RecordForm

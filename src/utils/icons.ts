@@ -6,7 +6,9 @@ import {
     faList,
     faCalendarPlus,
     faCalendar,
-    faFolderPlus
+    faFolderPlus,
+    faTrashCan,
+    faPenToSquare
 } from "@fortawesome/free-solid-svg-icons";
 import {IconName} from "@fortawesome/free-solid-svg-icons";
 
@@ -24,6 +26,10 @@ export const mapIcons = (name: IconName): IconDefinition => {
             return faCalendar;
         case "folder-plus":
             return faFolderPlus;
+        case "trash-can":
+            return faTrashCan;
+        case "pen-to-square":
+            return faPenToSquare;
     }
     return faCross
 }

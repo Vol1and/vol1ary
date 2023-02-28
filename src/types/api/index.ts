@@ -1,4 +1,6 @@
 // Структура ответа от API
+import {ITask} from "@/types";
+
 interface ErrorCustomData {
   text: string
   code: string
@@ -19,8 +21,10 @@ export interface FormResponse {
 
 
 export interface IRecordRaw {
+  _id: string
   description: string
   date: string
+  tasks: ITask[]
 }
 
 export interface IRecordListResponseRaw {

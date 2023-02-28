@@ -11,6 +11,7 @@ export interface FormWithTasks {
 }
 
 export interface IRecord extends FormWithTasks {
+    _id: string
     date: Dayjs
     description: string
     tasks: ITask[]

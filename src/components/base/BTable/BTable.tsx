@@ -1,8 +1,9 @@
-import React from "react";
+import React, {ReactNode} from "react";
 
 export interface ITableColumn<T> {
     label: string
-    value: ((item: T) => string)
+    cellClass?: string
+    value: ((item: T) => string | ReactNode)
 }
 
 interface Props<T> {
@@ -30,7 +31,7 @@ const BTable = <T extends {}>({items = [], columns}: Props<T>) => {
                         <tr key={`row-${rowIdx}`} className="b-table__row">
                             {
                                 columns.map((col, colIdcx) => (
-                                    <td className="b-table__row-cell"
+                                    <td className={`b-table__row-cell ${col.cellClass}`}
                                         key={`cell-${rowIdx}-${colIdcx}`}>{col.value(item) || '-'}</td>
                                 ))
                             }

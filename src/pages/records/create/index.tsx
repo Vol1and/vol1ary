@@ -1,14 +1,16 @@
-import RecordCreateForm from "@/components/form/RecordCreateForm";
+import RecordForm from "@/components/form/RecordForm";
 import {IRecord} from "@/types";
 import dayjs from "dayjs";
 
 const RecordCreate = () => {
     const record: IRecord = {
-        description:'',
+        _id: '',
+        tasks: [],
+        description: '',
         date: dayjs()
     }
     return (
-        <RecordCreateForm {...record} />
+        <RecordForm {...record} />
     )
 }
 export default RecordCreate

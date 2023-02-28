@@ -2,7 +2,7 @@ import BTable, {ITableColumn} from "@/components/base/BTable/BTable";
 import {GetServerSideProps} from "next";
 import {IRecord} from "@/types";
 import api from "@/api";
-import React from "react";
+import React, {useState} from "react";
 import BButton from "@/components/base/BButton/BButton";
 import BIcon from "@/components/base/BIcon/BIcon";
 import Link from "next/link";
@@ -10,6 +10,8 @@ import {ROUTE} from "@/routes";
 import dayjs from "dayjs";
 import {IRecordRaw} from "@/types/api";
 import {DATE_FORMAT} from "@/config/base.config";
+import {notification} from "antd";
+import {useRouter} from "next/router";
 
 interface Props {
     itemsRaw: IRecordRaw[]
@@ -17,15 +19,46 @@ interface Props {
 
 const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
 
-    const items: IRecord[] = itemsRaw.map((el) => ({
+    const router = useRouter();
+
+    const [items, setItems] = useState<IRecord[]>(itemsRaw.map((el) => ({
         ...el,
         date: dayjs(el.date)
-    }))
+    })));
 
     const columns: ITableColumn<IRecord>[] = [
-        {label: 'Дата', value: (item) => item.date.format(DATE_FORMAT) },
-        {label: 'Описание', value: (item) => item.description}
+        {cellClass: 'max-w-[100px]', label: 'Дата', value: (item) => item.date.format(DATE_FORMAT) },
+        {cellClass: 'max-w-[700px]', label: 'Описание', value: (item) => item.description},
+        {cellClass: 'max-w-[100px]', label: '', value: (item) => (
+                <div className="flex gap-8">
+                    <BButton onClick={editRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'pen'}/></BButton>
+                    <BButton onClick={deleteRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'trash-can'}/></BButton>
+                </div>)},
     ]
+
+    const deleteRecord = (id: string) => async () => {
+        try {
+            await api.record.delete(id)
+            notification.success({message: 'Запись успешно удалена!'});
+            const {items: newItems} = await api.record.list()
+            setItems(newItems.map((el) => ({
+                ...el,
+                date: dayjs(el.date)
+            })))
+        } catch (e) {
+            console.log(e)
+            notification.error({message: `Ошибка во время удаления записи:\n${e}`});
+        }
+    }
+
+    const editRecord = (id: string) => async () => {
+        try {
+            await router.push(`${ROUTE.RECORDS.slug}/${id}`)
+        } catch (e) {
+            console.log(e)
+            notification.error({message: `Ошибка при переходе к редактированию записи:\n${e}`});
+        }
+    }
 
     return (
         <div>
