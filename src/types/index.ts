@@ -1,13 +1,19 @@
 import {IconName} from "@fortawesome/free-solid-svg-icons";
 import {Dayjs} from "dayjs";
 
-export interface ITableDisplayable {
-    [idx: string]: string | number | Dayjs
+export interface ITask {
+    label: string
+    status: 'active' | 'done' | 'cancelled'
 }
 
-export interface IRecord extends ITableDisplayable {
+export interface FormWithTasks {
+    tasks: ITask[]
+}
+
+export interface IRecord extends FormWithTasks {
     date: Dayjs
     description: string
+    tasks: ITask[]
 }
 
 export interface ISidebarTree {

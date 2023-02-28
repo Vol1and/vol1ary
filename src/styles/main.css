@@ -6,7 +6,8 @@
 @import "ui/table.css";
 @import "ui/datepicker.css";
 @import 'layout.css';
-@import 'form.css';
+@import 'form/form.css';
+@import 'form/task-picker.css';
 
 body {
     @apply bg-additional-2/60;

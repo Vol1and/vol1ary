@@ -9,16 +9,18 @@ import React from "react";
 import {IRecord} from "@/types";
 import {notification} from "antd";
 import BTextarea from "@/components/base/BTextarea/BTextarea";
+import TaskPicker from "@/components/tasks/TaskPicker/TaskPicker";
 
 
 
-const RecordCreateForm: React.FC<IRecord> = ({description, date}) => {
+const RecordCreateForm: React.FC<IRecord> = ({description, date, tasks}) => {
 
-    const {control, getValues, handleSubmit} = useForm<IRecord>({
-        mode: "onSubmit",
+    const {control, register, getValues, handleSubmit} = useForm<IRecord>({
+        mode: "onBlur",
         values: {
             description,
-            date
+            date,
+            tasks
         }
     });
 
@@ -47,7 +49,8 @@ const RecordCreateForm: React.FC<IRecord> = ({description, date}) => {
 
                 <div className="form__record-body">
                     <div className="form__record-statuses">
-                        <BDatePicker control={control} name="" placeholder="Дата"/>
+                        <BDatePicker control={control} name="date" placeholder="Дата"/>
+                        <TaskPicker control={control} />
                     </div>
 
                     <BTextarea className="form__record-textarea" control={control} name="description" placeholder="Как прошел день?"/>

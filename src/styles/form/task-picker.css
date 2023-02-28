@@ -1,0 +1,13 @@
+.task-picker {
+    @apply flex flex-col items-center px-0 py-8;
+}
+
+.task-element {
+  @apply border-b-purple border-b-[0.5px] w-full p-4 t-p2;
+    &:first-child {
+        @apply border-t-purple border-t-[0.5px]
+     }
+    > input {
+      @apply outline-none;
+  }
+}

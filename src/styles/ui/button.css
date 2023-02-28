@@ -9,6 +9,16 @@
         > svg {
             @apply h-30 w-30;
         }
+        &.b-button--sm {
+           @apply p-6;
+           > svg {
+               @apply h-24 w-24;
+           }
+        }
+     }
+
+    &--flat {
+         box-shadow: none;
      }
 
     &--primary {
@@ -20,4 +30,7 @@
          border-primary/10 border-[0.5px] hover:bg-primary/10;
      }
 
+    &--sm {
+        @apply px-10 md:px-20 lg:py-6 t-p3
+     }
 }
