@@ -5,6 +5,7 @@ import {GetServerSideProps} from "next";
 import api from "@/api";
 import {IRecordRaw} from "@/types/api";
 import React from "react";
+import {getDefaultTime} from "@/utils";
 
 interface Props {
     recordRaw: IRecordRaw
@@ -14,7 +15,9 @@ interface Props {
 const RecordEdit: React.FC<Props> = ({recordRaw}) => {
     const record: IRecord = {
         ...recordRaw,
-        date: dayjs(dayjs(recordRaw.date))
+        date: dayjs(recordRaw.date),
+        wakeTime:  recordRaw.wakeTime ? dayjs(recordRaw.wakeTime)  : getDefaultTime(),
+        sleepTime: recordRaw.sleepTime ? dayjs(recordRaw.sleepTime) : getDefaultTime()
     }
 
     return (
@@ -27,7 +30,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     try {
         const response = await api.record.details(`${context.params?.id}`)
 
-        console.log(response)
         return {
             props: {
                 recordRaw: response.data

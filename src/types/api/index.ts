@@ -22,6 +22,8 @@ export interface FormResponse {
 
 export interface IRecordRaw {
   _id: string
+  wakeTime: string
+  sleepTime: string
   description: string
   date: string
   tasks: ITask[]

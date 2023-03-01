@@ -9,3 +9,7 @@
 .b-input, .b-textarea {
     @apply outline-none t-p2 text-black placeholder-additional-3/30 w-full;
 }
+
+.b-label {
+    @apply absolute t-p3 left-[10px] -top-10 z-[100] bg-white text-primary/70;
+}

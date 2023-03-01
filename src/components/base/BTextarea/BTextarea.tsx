@@ -15,6 +15,10 @@ const BTextarea = <T extends FieldValues>({placeholder = '', className = '', ...
     const classes = classNames(className, `b-textarea`)
 
     return (
+        <div className="w-full relative">
+            <div className="b-label">
+                {placeholder}
+            </div>
             <textarea
                 data-testid="textarea"
                 placeholder={placeholder}
@@ -22,6 +26,7 @@ const BTextarea = <T extends FieldValues>({placeholder = '', className = '', ...
                 {...props}
                 className={classes}
             />
+        </div>
     )
 }
 

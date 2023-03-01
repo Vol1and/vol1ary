@@ -10,15 +10,18 @@ import {IRecord} from "@/types";
 import {notification} from "antd";
 import BTextarea from "@/components/base/BTextarea/BTextarea";
 import TaskPicker from "@/components/tasks/TaskPicker/TaskPicker";
+import BTimePicker from "@/components/base/BTimePicker/BTimePicker";
 
 
 
-const RecordForm: React.FC<IRecord> = ({_id, description, date, tasks}) => {
+const RecordForm: React.FC<IRecord> = ({_id, description, date, tasks, wakeTime, sleepTime}) => {
 
     const {control, getValues, handleSubmit} = useForm<IRecord>({
         mode: "onBlur",
         values: {
             _id,
+            sleepTime,
+            wakeTime,
             description,
             date,
             tasks
@@ -56,6 +59,8 @@ const RecordForm: React.FC<IRecord> = ({_id, description, date, tasks}) => {
                 <div className="form__record-body">
                     <div className="form__record-statuses">
                         <BDatePicker control={control} name="date" placeholder="Дата"/>
+                        <BTimePicker control={control} name={'wakeTime'} placeholder="Время пробуждения" />
+                        <BTimePicker control={control} name={'sleepTime'} placeholder="Время отхода ко сну" />
                         <TaskPicker control={control} />
                     </div>
 

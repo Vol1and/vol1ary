@@ -1,6 +1,6 @@
 import React from "react";
 import {FieldValues, useController, UseControllerProps} from "react-hook-form";
-import {DatePicker, Button, Avatar} from "antd";
+import {DatePicker} from "antd";
 import {DATE_FORMAT} from "@/config/base.config";
 import BIcon from "../BIcon/BIcon";
 
@@ -15,15 +15,21 @@ const BDatePicker = <T extends FieldValues>({dateFormat = DATE_FORMAT, placehold
     const {field} = useController(props);
 
     return (
-        <DatePicker
+        <div className="relative">
+
+            <div className="b-label">
+                {placeholder}
+            </div>
+            <DatePicker
             data-testid="date-picker"
             className="b-datepicker"
             defaultValue={field.value}
             {...field}
             format={dateFormat}
             placeholder={placeholder}
-            suffixIcon={<BIcon name={'calendar'} />}
+            suffixIcon={<BIcon name={'calendar'}/>}
         />
+        </div>
     )
 }
 
