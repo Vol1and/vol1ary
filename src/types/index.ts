@@ -17,6 +17,7 @@ export interface IRecord extends FormWithTasks {
     date: Dayjs
     description: string
     tasks: ITask[]
+    rate: number
 }
 
 export interface ISidebarTree {

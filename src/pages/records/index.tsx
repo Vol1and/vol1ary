@@ -9,7 +9,7 @@ import Link from "next/link";
 import {ROUTE} from "@/routes";
 import dayjs from "dayjs";
 import {IRecordRaw} from "@/types/api";
-import {DATE_FORMAT} from "@/config/base.config";
+import {DATE_FORMAT, RECORD_RATE_LIST} from "@/config/base.config";
 import {notification} from "antd";
 import {useRouter} from "next/router";
 
@@ -23,13 +23,16 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
 
     const [items, setItems] = useState<IRecord[]>(itemsRaw.map((el) => ({
         ...el,
-        date: dayjs(el.date)
+        date: dayjs(el.date),
+        wakeTime: dayjs(el.wakeTime),
+        sleepTime: dayjs(el.sleepTime)
     })));
 
     const columns: ITableColumn<IRecord>[] = [
         {cellClass: 'max-w-[100px]', label: 'Дата', value: (item) => item.date.format(DATE_FORMAT) },
-        {cellClass: 'max-w-[700px]', label: 'Описание', value: (item) => item.description},
-        {cellClass: 'max-w-[100px]', label: '', value: (item) => (
+        {cellClass: 'max-w-[10px]',  label: 'Оценка', value: (item) => RECORD_RATE_LIST.find((el => el.value === item.rate))?.label || 'Неопределено'},
+        {cellClass: 'max-w-[600px]', label: 'Описание', value: (item) => item.description},
+        {cellClass: 'max-w-[80px]', label: '', value: (item) => (
                 <div className="flex gap-8">
                     <BButton onClick={editRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'pen'}/></BButton>
                     <BButton onClick={deleteRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'trash-can'}/></BButton>
@@ -43,7 +46,9 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
             const {items: newItems} = await api.record.list()
             setItems(newItems.map((el) => ({
                 ...el,
-                date: dayjs(el.date)
+                date: dayjs(el.date),
+                wakeTime: dayjs(el.wakeTime),
+                sleepTime: dayjs(el.sleepTime)
             })))
         } catch (e) {
             console.log(e)

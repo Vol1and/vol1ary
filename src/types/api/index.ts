@@ -27,6 +27,7 @@ export interface IRecordRaw {
   description: string
   date: string
   tasks: ITask[]
+  rate: number
 }
 
 export interface IRecordListResponseRaw {

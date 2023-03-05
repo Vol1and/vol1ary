@@ -9,21 +9,5 @@ export const SIDEBAR_TREE: ISidebarTree[] = [
             {icon: 'pen-to-square', label:'Привычки', link: ROUTE.HABITS.slug},
             {icon: 'signal', label:'Спринты', link: ROUTE.SPRINTS.slug},
         ]
-    },
-    {
-        title: 'Настройки',
-        links: [
-            {icon: 'list', label:'Записи', link: ROUTE.RECORDS.slug},
-            {icon: 'pen-to-square', label:'Привычки', link: ROUTE.HABITS.slug},
-            {icon: 'signal', label:'Спринты', link: ROUTE.SPRINTS.slug},
-        ]
-    },
-    {
-        title: 'Статистика',
-        links: [
-            {icon: 'list', label:'Записи', link: ROUTE.RECORDS.slug},
-            {icon: 'pen-to-square', label:'Привычки', link: ROUTE.HABITS.slug},
-            {icon: 'signal', label:'Спринты', link: ROUTE.SPRINTS.slug},
-        ]
-    },
+    }
 ]

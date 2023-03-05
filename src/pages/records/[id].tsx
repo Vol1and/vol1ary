@@ -21,7 +21,10 @@ const RecordEdit: React.FC<Props> = ({recordRaw}) => {
     }
 
     return (
-        <RecordForm {...record} />
+        <div className="form-container">
+            <h1 className="t-h1 mb-20">Редактировать запись</h1>
+            <RecordForm {...record} />
+        </div>
     )
 }
 export default RecordEdit
