@@ -1,7 +1,7 @@
 import React, {ReactNode} from "react";
 
 export interface ITableColumn<T> {
-    label: string
+    label: ReactNode | string
     cellClass?: string
     value: ((item: T) => string | ReactNode)
 }

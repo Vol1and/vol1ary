@@ -8,11 +8,11 @@ import {
     faCalendar,
     faFolderPlus,
     faTrashCan,
-    faPenToSquare
+    faPenToSquare, faBanSmoking, faBeer, faHandshakeSlash, faCubesStacked, faShower
 } from "@fortawesome/free-solid-svg-icons";
 import {IconName} from "@fortawesome/free-solid-svg-icons";
 
-export const mapIcons = (name: IconName): IconDefinition => {
+export const mapIcons = (name: IconName | string): IconDefinition => {
     switch (name) {
         case "signal":
             return faSignal;
@@ -30,6 +30,16 @@ export const mapIcons = (name: IconName): IconDefinition => {
             return faTrashCan;
         case "pen-to-square":
             return faPenToSquare;
+        case "handoff":
+            return faHandshakeSlash;
+        case "smoking":
+            return faBanSmoking;
+        case "alcohol":
+            return faBeer;
+        case "sugar":
+            return faCubesStacked;
+        case "shower":
+            return faShower;
     }
     return faCross
 }

@@ -8,6 +8,7 @@
 @import 'layout.css';
 @import 'form/form.css';
 @import 'form/task-picker.css';
+@import "record.css";
 
 body {
     @apply bg-additional-2/60;

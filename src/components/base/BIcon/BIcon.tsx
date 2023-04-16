@@ -6,7 +6,7 @@ import {mapIcons} from "@/utils/icons";
 
 
 interface Props  extends Omit<FontAwesomeIconProps, 'icon'> {
-    name: IconName
+    name: IconName | string
 }
 
 const BIcon: React.FC<Props> = ({name, ...props}) => {

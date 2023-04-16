@@ -9,7 +9,7 @@ import Link from "next/link";
 import {ROUTE} from "@/routes";
 import dayjs from "dayjs";
 import {IRecordRaw} from "@/types/api";
-import {DATE_FORMAT, RECORD_RATE_LIST} from "@/config/base.config";
+import {DATE_FORMAT, RECORD_RATE_LIST, TRACKERS_LIST} from "@/config/base.config";
 import {notification} from "antd";
 import {useRouter} from "next/router";
 
@@ -30,8 +30,20 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
 
     const columns: ITableColumn<IRecord>[] = [
         {cellClass: 'max-w-[100px]', label: 'Дата', value: (item) => item.date.format(DATE_FORMAT) },
-        {cellClass: 'max-w-[10px]',  label: 'Оценка', value: (item) => RECORD_RATE_LIST.find((el => el.value === item.rate))?.label || 'Неопределено'},
-        {cellClass: 'max-w-[600px]', label: 'Описание', value: (item) => item.description},
+
+        {cellClass: 'max-w-[10px]',  label: 'Оценка', value: (item) => (
+            <div className={`record-rate-cell-${item.rate}`}>
+                {RECORD_RATE_LIST.find((el => el.value === item.rate))?.label || 'Неопределено'}
+            </div>)},
+
+        {cellClass: 'max-w-[450px]', label: 'Описание', value: (item) => item.description},
+
+        ...TRACKERS_LIST.map<ITableColumn<IRecord>>((el) => (
+            {cellClass: 'max-w-[70px]', label: (<BIcon name={el.key} />) , value: (item) =>
+                    item.trackers.find(track => track.key === el.key)?.value ? (<div className="text-green">Да</div>) : (<div className="text-red">Нет</div>)
+                }
+            )),
+
         {cellClass: 'max-w-[80px]', label: '', value: (item) => (
                 <div className="flex gap-8">
                     <BButton onClick={editRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'pen'}/></BButton>

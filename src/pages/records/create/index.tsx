@@ -1,10 +1,14 @@
 import RecordForm from "@/components/form/RecordForm";
-import {IRecord} from "@/types";
+import {IRecord, ITag} from "@/types";
 import dayjs from "dayjs";
 import {getDefaultTime} from "@/utils";
 import React from "react";
+import {TRACKERS_LIST} from "@/config/base.config";
 
 const RecordCreate = () => {
+
+    const trackers: ITag<boolean>[] = TRACKERS_LIST.map<ITag<boolean>>((el) => ({key: el.key, value: false}))
+
     const record: IRecord = {
         _id: '',
         tasks: [],
@@ -12,7 +16,8 @@ const RecordCreate = () => {
         date: dayjs(),
         wakeTime: getDefaultTime(),
         sleepTime: getDefaultTime(),
-        rate: 5
+        rate: 5,
+        trackers
     }
     return (
         <div className="form-container">

@@ -8,15 +8,16 @@ interface Props <T extends FieldValues>  extends UseControllerProps<T>
 {
     dateFormat?: string
     placeholder?: string
+    readonly? : boolean
+    disabled?: boolean
 }
 
 
-const BDatePicker = <T extends FieldValues>({dateFormat = DATE_FORMAT, placeholder = "Выберите дату",  ...props}: Props<T>) => {
+const BDatePicker = <T extends FieldValues>({dateFormat = DATE_FORMAT, placeholder = "Выберите дату", readonly, disabled,  ...props}: Props<T>) => {
     const {field} = useController(props);
 
     return (
         <div className="relative">
-
             <div className="b-label">
                 {placeholder}
             </div>
@@ -25,7 +26,9 @@ const BDatePicker = <T extends FieldValues>({dateFormat = DATE_FORMAT, placehold
             className="b-datepicker"
             defaultValue={field.value}
             {...field}
+            disabled={disabled}
             format={dateFormat}
+            inputReadOnly
             placeholder={placeholder}
             suffixIcon={<BIcon name={'calendar'}/>}
         />

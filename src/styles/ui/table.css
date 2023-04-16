@@ -9,6 +9,10 @@
     &__header {
         &-cell {
              @apply px-16 py-10 t-p1 font-semibold border-r border-r-purple border-b border-b-purple;
+
+            svg {
+                @apply h-26;
+            }
          }
      }
     &__row {

@@ -1,5 +1,5 @@
 // Структура ответа от API
-import {ITask} from "@/types";
+import {ITag, ITask} from "@/types";
 
 interface ErrorCustomData {
   text: string
@@ -28,6 +28,11 @@ export interface IRecordRaw {
   date: string
   tasks: ITask[]
   rate: number
+  trackers: ITag<boolean>[]
+}
+
+export interface ISprintRaw {
+
 }
 
 export interface IRecordListResponseRaw {

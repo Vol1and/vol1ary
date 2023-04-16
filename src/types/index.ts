@@ -10,6 +10,11 @@ export interface FormWithTasks {
     tasks: ITask[]
 }
 
+export interface ITag<T = string> {
+    value: T,
+    key: string
+}
+
 export interface IRecord extends FormWithTasks {
     _id: string
     wakeTime: Dayjs
@@ -18,6 +23,12 @@ export interface IRecord extends FormWithTasks {
     description: string
     tasks: ITask[]
     rate: number
+    trackers: ITag<boolean>[]
+}
+
+export interface ISprint {
+    startDate: Dayjs,
+    endDate: Dayjs
 }
 
 export interface ISidebarTree {
