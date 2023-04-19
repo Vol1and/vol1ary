@@ -13,6 +13,8 @@ const RecordCreate = () => {
         _id: '',
         tasks: [],
         description: '',
+        physicalDescription: '',
+        mentalDescription: '',
         date: dayjs(),
         wakeTime: getDefaultTime(),
         sleepTime: getDefaultTime(),

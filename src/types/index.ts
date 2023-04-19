@@ -21,6 +21,8 @@ export interface IRecord extends FormWithTasks {
     sleepTime: Dayjs
     date: Dayjs
     description: string
+    physicalDescription: string
+    mentalDescription: string
     tasks: ITask[]
     rate: number
     trackers: ITag<boolean>[]

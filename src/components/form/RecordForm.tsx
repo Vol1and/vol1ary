@@ -17,20 +17,11 @@ import BCheckbox from "@/components/base/BCheckbox/BCheckbox";
 
 
 
-const RecordForm: React.FC<IRecord> = ({_id, description, date, tasks, wakeTime, sleepTime, rate, trackers}) => {
+const RecordForm: React.FC<IRecord> = (record) => {
 
     const {control, getValues, handleSubmit} = useForm<IRecord>({
         mode: "onChange",
-        values: {
-            _id,
-            rate,
-            sleepTime,
-            wakeTime,
-            description,
-            date,
-            tasks,
-            trackers
-        }
+        values: record
     });
 
     const {fields} = useFieldArray<IRecord, 'trackers'>({
@@ -70,7 +61,11 @@ const RecordForm: React.FC<IRecord> = ({_id, description, date, tasks, wakeTime,
                         <BSelect control={control} name={'rate'} options={RECORD_RATE_LIST} placeholder={"Оценка дня"} />
                         <TaskPicker control={control} />
                     </div>
-                    <BTextarea className="form__record-textarea" control={control} name="description" placeholder="Как прошел день?"/>
+                    <div className="w-full">
+                        <BTextarea className="form__record-textarea" control={control} name="description" placeholder="Что сегодня было?"/>
+                        <BTextarea className="form__record-textarea" control={control} name="physicalDescription" placeholder="Физическое самочувствие"/>
+                        <BTextarea className="form__record-textarea" control={control} name="mentalDescription" placeholder="Ментальное самочувствие"/>
+                    </div>
 
                     <div className="form__record-statuses">
                         {fields.map(((el,idx) => (

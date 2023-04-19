@@ -25,6 +25,8 @@ export interface IRecordRaw {
   wakeTime: string
   sleepTime: string
   description: string
+  physicalDescription: string
+  mentalDescription: string
   date: string
   tasks: ITask[]
   rate: number
