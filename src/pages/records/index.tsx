@@ -19,14 +19,14 @@ interface Props {
 
 const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
 
-    const router = useRouter();
-
     const [items, setItems] = useState<IRecord[]>(itemsRaw.map((el) => ({
         ...el,
         date: dayjs(el.date),
         wakeTime: dayjs(el.wakeTime),
         sleepTime: dayjs(el.sleepTime)
     })));
+
+    const router = useRouter();
 
     const columns: ITableColumn<IRecord>[] = [
         {cellClass: 'max-w-[100px]', label: 'Дата', value: (item) => item.date.format(DATE_FORMAT) },

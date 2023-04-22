@@ -28,6 +28,15 @@ export interface IRecord extends FormWithTasks {
     trackers: ITag<boolean>[]
 }
 
+export interface ITracker {
+    _id: string
+    key: string
+    name: string
+    recordLabel: string
+    defaultValue: boolean
+    isShow: boolean
+}
+
 export interface ISprint {
     startDate: Dayjs,
     endDate: Dayjs

@@ -14,9 +14,9 @@ const BInput = <T extends FieldValues>(props: Props<T>) => {
     return (
         <div className={`b-input-group`}>
 
-            <label>
+            <div className="b-label">
                 {props.placeholder}
-            </label>
+            </div>
                 <input
                 {...field}
                 {...props}

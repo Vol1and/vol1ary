@@ -8,6 +8,7 @@
 
   &__record {
    @apply w-[1200px];
+
       &-body {
             @apply flex gap-20 mb-20;
        }
@@ -19,6 +20,11 @@
         @apply min-h-[56px] h-[250px] mb-16;
        }
    }
+
+   &__tracker {
+    @apply flex flex-col gap-20 w-[500px];
+
+    }
 
     &__sprint {
          @apply flex flex-col gap-20

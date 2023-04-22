@@ -1,0 +1,23 @@
+.record-rate-cell {
+    &-1 {
+    @apply text-red;
+    }
+    &-2 {
+    @apply text-red/90;
+    }
+    &-3 {
+    @apply text-red/70;
+    }
+    &-4 {
+    @apply text-primary/80;
+    }
+    &-6 {
+    @apply text-green/70;
+    }
+    &-7 {
+    @apply text-green/90;
+    }
+    &-8 {
+    @apply text-green;
+    }
+}

@@ -8,6 +8,7 @@ import {
     faCalendar,
     faFolderPlus,
     faTrashCan,
+    faPlusSquare,
     faPenToSquare, faBanSmoking, faBeer, faHandshakeSlash, faCubesStacked, faShower
 } from "@fortawesome/free-solid-svg-icons";
 import {IconName} from "@fortawesome/free-solid-svg-icons";
@@ -38,6 +39,8 @@ export const mapIcons = (name: IconName | string): IconDefinition => {
             return faBeer;
         case "sugar":
             return faCubesStacked;
+        case "plus-square":
+            return faPlusSquare;
         case "shower":
             return faShower;
     }

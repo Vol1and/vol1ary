@@ -1,5 +1,5 @@
 // Структура ответа от API
-import {ITag, ITask} from "@/types";
+import {ITag, ITask, ITracker} from "@/types";
 
 interface ErrorCustomData {
   text: string
@@ -39,4 +39,8 @@ export interface ISprintRaw {
 
 export interface IRecordListResponseRaw {
   items: IRecordRaw[]
+}
+
+export interface ITrackerListResponse {
+  items: ITracker[]
 }
