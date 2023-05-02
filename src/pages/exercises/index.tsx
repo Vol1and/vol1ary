@@ -25,7 +25,7 @@ const ExerciseList: React.FC<Props> = ({itemsRaw}, context) => {
         {
             cellClass: 'max-w-[200px]',
             label: 'Тип',
-            value: (item) => EXERCISE_TYPES_LIST.find((el) => el.key === item.type)?.value || 'Неизвестно'
+            value: (item) => EXERCISE_TYPES_LIST.find((el) => el.value === item.type)?.label || 'Неизвестно'
         },
     ]
 

@@ -21,9 +21,8 @@
        }
    }
 
-   &__tracker {
+   &__tracker, &__exercise {
     @apply flex flex-col gap-20 w-[500px];
-
     }
 
     &__sprint {

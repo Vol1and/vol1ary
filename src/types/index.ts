@@ -39,7 +39,7 @@ export interface ITracker {
 
 export interface IExercise {
     _id: string
-    key: string
+    slug: string
     name: string
     type: 'timeframe' | 'count' | 'weight'
 }

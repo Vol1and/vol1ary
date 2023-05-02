@@ -24,8 +24,9 @@ export const TRACKERS_LIST: ITag[] = [
     {key: 'shower', value: 'Холодный душ'}
 ]
 
-export const EXERCISE_TYPES_LIST: ITag[] = [
-    {key: 'timeframe', value: 'На время'},
-    {key: 'count', value: 'На количество'},
-    {key: 'weight', value: 'На вес'}
+export const EXERCISE_TYPES_LIST: ISelectOption[] = [
+    {value: 'timeframe', label: 'На время'},
+    {value: 'count', label: 'На количество'},
+    {value: 'weight', label: 'На вес'},
+    {value: 'none', label: 'Кардио'}
 ]

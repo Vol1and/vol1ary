@@ -1,16 +1,6 @@
-import RecordForm from "@/components/form/RecordForm";
 import React from "react";
 import TrackerForm from "@/components/form/TrackerForm";
-import {IRecord, ITracker} from "@/types";
-import {useRouter} from "next/router";
-import {ITableColumn} from "@/components/base/BTable/BTable";
-import {DATE_FORMAT, RECORD_RATE_LIST, TRACKERS_LIST} from "@/config/base.config";
-import BIcon from "@/components/base/BIcon/BIcon";
-import BButton from "@/components/base/BButton/BButton";
-import api from "@/api";
-import {notification} from "antd";
-import dayjs from "dayjs";
-import {ROUTE} from "@/routes";
+import {ITracker} from "@/types";
 
 
 const TrackerCreate = () => {
