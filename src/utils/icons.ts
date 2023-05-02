@@ -1,4 +1,5 @@
 import {
+    faDumbbell,
     IconDefinition,
     faSignal,
     faCross,
@@ -9,6 +10,7 @@ import {
     faFolderPlus,
     faTrashCan,
     faPlusSquare,
+    faGears,
     faPenToSquare, faBanSmoking, faBeer, faHandshakeSlash, faCubesStacked, faShower
 } from "@fortawesome/free-solid-svg-icons";
 import {IconName} from "@fortawesome/free-solid-svg-icons";
@@ -43,6 +45,10 @@ export const mapIcons = (name: IconName | string): IconDefinition => {
             return faPlusSquare;
         case "shower":
             return faShower;
+        case "dumbbell":
+            return faDumbbell;
+        case "gears":
+            return faGears;
     }
     return faCross
 }

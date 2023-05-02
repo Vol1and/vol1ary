@@ -29,7 +29,7 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
     const router = useRouter();
 
     const columns: ITableColumn<IRecord>[] = [
-        {cellClass: 'max-w-[100px]', label: 'Дата', value: (item) => item.date.format(DATE_FORMAT) },
+        {cellClass: 'max-w-[100px]', label: 'Дата', value: (item) => item.date.format('DD.MM.YY') },
 
         {cellClass: 'max-w-[10px]',  label: 'Оценка', value: (item) => (
             <div className={`record-rate-cell-${item.rate}`}>
@@ -43,12 +43,6 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
                     item.trackers.find(track => track.key === el.key)?.value ? (<div className="text-green">Да</div>) : (<div className="text-red">Нет</div>)
                 }
             )),
-
-        {cellClass: 'max-w-[80px]', label: '', value: (item) => (
-                <div className="flex gap-8">
-                    <BButton onClick={editRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'pen'}/></BButton>
-                    <BButton onClick={deleteRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'trash-can'}/></BButton>
-                </div>)},
     ]
 
     const deleteRecord = (id: string) => async () => {
@@ -68,9 +62,9 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
         }
     }
 
-    const editRecord = (id: string) => async () => {
+    const editRecord = async (item: IRecord)  => {
         try {
-            await router.push(`${ROUTE.RECORDS.slug}/${id}`)
+            await router.push(`${ROUTE.RECORDS.slug}/${item._id}`)
         } catch (e) {
             console.log(e)
             notification.error({message: `Ошибка при переходе к редактированию записи:\n${e}`});
@@ -87,7 +81,7 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
                     </BButton>
                 </Link>
             </div>
-            <BTable columns={columns} items={items}/>
+            <BTable dblClickHandler={editRecord} columns={columns} items={items}/>
         </div>
     )
 }

@@ -37,6 +37,13 @@ export interface ITracker {
     isShow: boolean
 }
 
+export interface IExercise {
+    _id: string
+    key: string
+    name: string
+    type: 'timeframe' | 'count' | 'weight'
+}
+
 export interface ISprint {
     startDate: Dayjs,
     endDate: Dayjs

@@ -23,3 +23,9 @@ export const TRACKERS_LIST: ITag[] = [
     {key: 'sugar', value: 'Без сахара'},
     {key: 'shower', value: 'Холодный душ'}
 ]
+
+export const EXERCISE_TYPES_LIST: ITag[] = [
+    {key: 'timeframe', value: 'На время'},
+    {key: 'count', value: 'На количество'},
+    {key: 'weight', value: 'На вес'}
+]

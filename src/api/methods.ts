@@ -12,6 +12,12 @@ import trackerDelete from './tracker/delete'
 import trackerDetails from './tracker/details'
 import trackerUpdate from './tracker/update'
 
+import exerciseList from './exercise/list'
+import exerciseCreate from './exercise/create'
+import exerciseDelete from './exercise/delete'
+import exerciseDetails from './exercise/details'
+import exerciseUpdate from './exercise/update'
+
 export default {
     record: {
         list: recordList,
@@ -26,5 +32,12 @@ export default {
         delete: trackerDelete,
         details: trackerDetails,
         update: trackerUpdate
+    },
+    exercise: {
+        list: exerciseList,
+        create: exerciseCreate,
+        delete: exerciseDelete,
+        details: exerciseDetails,
+        update: exerciseUpdate
     }
 }

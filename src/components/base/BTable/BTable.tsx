@@ -1,4 +1,5 @@
-import React, {ReactNode} from "react";
+import React, {HTMLProps, ReactNode, useState} from "react";
+import classNames from "classnames";
 
 export interface ITableColumn<T> {
     label: ReactNode | string
@@ -6,15 +7,27 @@ export interface ITableColumn<T> {
     value: ((item: T) => string | ReactNode)
 }
 
-interface Props<T> {
+interface Props<T> extends HTMLProps<HTMLDivElement> {
     columns: ITableColumn<T>[]
     items?: T[]
+    dblClickHandler?: (el: T) => void | Promise<void>
 }
 
-const BTable = <T extends {}>({items = [], columns}: Props<T>) => {
+const BTable = <T extends {}>({items = [], columns, dblClickHandler = undefined, className}: Props<T>) => {
+
+    const [activeRow, setActiveRow] = useState<null | T>(null)
+
+    const classes = classNames('b-table', className);
+
+
+    const handleDoubleClick = async (el: T) => {
+        if(dblClickHandler) {
+            await dblClickHandler(el)
+        }
+    }
 
     return (
-        <div className="b-table">
+        <div className={classes}>
             <table data-testid="b-table">
                 <thead className="b-table__header">
                 <tr>
@@ -28,7 +41,12 @@ const BTable = <T extends {}>({items = [], columns}: Props<T>) => {
                 <tbody>
                 {
                     items.map((item, rowIdx) => (
-                        <tr key={`row-${rowIdx}`} className="b-table__row">
+                        <tr
+                            key={`row-${rowIdx}`}
+                            onClick={() => setActiveRow(item)}
+                            onDoubleClick={() =>handleDoubleClick(item)}
+                            className={`b-table__row ${item === activeRow ? 'b-table__row_active' : ''}`}
+                        >
                             {
                                 columns.map((col, colIdcx) => (
                                     <td className={`b-table__row-cell ${col.cellClass}`}
