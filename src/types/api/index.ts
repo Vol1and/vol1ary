@@ -1,5 +1,5 @@
 // Структура ответа от API
-import {IExercise, ITag, ITask, ITracker} from "@/types";
+import {IRecord, IWorkout} from "@/types";
 
 interface ErrorCustomData {
   text: string
@@ -20,31 +20,16 @@ export interface FormResponse {
 }
 
 
-export interface IRecordRaw {
-  _id: string
+export interface IRecordRaw extends Omit<IRecord, 'wakeTime' | 'sleepTime' | 'date'>{
+  date: string
   wakeTime: string
   sleepTime: string
-  description: string
-  physicalDescription: string
-  mentalDescription: string
+}
+
+export interface IWorkoutRaw extends Omit<IWorkout, 'date'> {
   date: string
-  tasks: ITask[]
-  rate: number
-  trackers: ITag<boolean>[]
 }
 
-export interface ISprintRaw {
-
-}
-
-export interface IRecordListResponseRaw {
-  items: IRecordRaw[]
-}
-
-export interface ITrackerListResponse {
-  items: ITracker[]
-}
-
-export interface IExerciseListResponse {
-  items: IExercise[]
+export interface IListResponse<T> {
+  items: T[]
 }

@@ -18,6 +18,12 @@ import exerciseDelete from './exercise/delete'
 import exerciseDetails from './exercise/details'
 import exerciseUpdate from './exercise/update'
 
+import workoutList from './workout/list'
+import workoutCreate from './workout/create'
+import workoutDelete from './workout/delete'
+import workoutDetails from './workout/details'
+import workoutUpdate from './workout/update'
+
 export default {
     record: {
         list: recordList,
@@ -39,5 +45,12 @@ export default {
         delete: exerciseDelete,
         details: exerciseDetails,
         update: exerciseUpdate
+    },
+    workout: {
+        list: workoutList,
+        create: workoutCreate,
+        delete: workoutDelete,
+        details: workoutDetails,
+        update: workoutUpdate
     }
 }

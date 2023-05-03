@@ -1,13 +1,14 @@
 import { requestPromise } from '@/utils/request'
-import {ITrackerListResponse} from "@/types/api";
+import {IListResponse} from "@/types/api";
+import { ITracker } from '@/types';
 
 /**
  * Получение списка записей о днях
  * @returns
  */
-export default async (): Promise<ITrackerListResponse> => {
+export default async (): Promise<IListResponse<ITracker>> => {
     try {
-        const {data} = await requestPromise<ITrackerListResponse>({
+        const {data} = await requestPromise<IListResponse<ITracker>>({
             url: 'tracker',
             method: 'get'
         })

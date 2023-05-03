@@ -37,11 +37,41 @@ export interface ITracker {
     isShow: boolean
 }
 
+
+export interface IWorkout {
+    _id: string
+    date: Dayjs
+    description: string
+    exercises: {
+        exercise: IExercise
+        turn?: ICountTurn | ITimeframeTurn | IWeightTurn
+    }[]
+}
+
 export interface IExercise {
     _id: string
     slug: string
     name: string
-    type: 'timeframe' | 'count' | 'weight'
+    type: 'timeframe' | 'count' | 'weight' | 'none'
+}
+
+export interface ITimeframeTurn {
+    time: Dayjs
+}
+
+export interface ICountTurn {
+    turns: {
+        count: number
+    }[]
+    restBetweenTurns: number
+}
+
+export interface IWeightTurn {
+    turns: {
+        count: number
+        weight: number
+    }[]
+    restBetweenTurns: number
 }
 
 export interface ISprint {
