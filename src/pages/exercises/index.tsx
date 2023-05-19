@@ -46,7 +46,7 @@ const ExerciseList: React.FC<Props> = ({itemsRaw}, context) => {
                 <h1 className="t-h1 mb-16">Упражнения</h1>
                 <Link href={ROUTE.EXERCISES.slug + '/create'}>
                     <BButton rounded variant="secondary">
-                        <BIcon name="plus-square"/>
+                        <BIcon name="faPlusSquare"/>
                     </BButton>
                 </Link>
             </div>

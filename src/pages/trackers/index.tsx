@@ -26,36 +26,16 @@ const TrackerList: React.FC<Props> = ({itemsRaw}) => {
         {cellClass: 'max-w-[60px]', label: 'Отображается', value: (item) => item.isShow ? 'Да' : 'Нет'},
 
         {cellClass: 'max-w-[100px]', label: 'Включено по умолчанию', value: (item) => item.defaultValue ? 'Да' : 'Нет'},
-
-        {cellClass: 'max-w-[80px]', label: '', value: (item) => (
-                <div className="flex gap-8">
-                    <BButton onClick={editRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'pen'}/></BButton>
-                    <BButton onClick={deleteRecord(item._id)} size="sm" flat variant="secondary" rounded><BIcon name={'trash-can'}/></BButton>
-                </div>)},
     ]
 
-    const deleteRecord = (id: string) => async () => {
+    const editTracker = async (tracker: ITracker) => {
         try {
-            await api.tracker.delete(id)
-            notification.success({message: 'Запись успешно удалена!'});
-            const {items} = await api.tracker.list()
-
-            setItems(items)
-        } catch (e) {
-            console.log(e)
-            notification.error({message: `Ошибка во время удаления трекера:\n${e}`});
-        }
-    }
-
-    const editRecord = (id: string) => async () => {
-        try {
-            await router.push(`${ROUTE.TRACKERS.slug}/${id}`)
+            await router.push(`${ROUTE.TRACKERS.slug}/${tracker._id}`)
         } catch (e) {
             console.log(e)
             notification.error({message: `Ошибка при переходе к редактированию трекера:\n${e}`});
         }
     }
-
 
     return (
         <div>
@@ -63,12 +43,12 @@ const TrackerList: React.FC<Props> = ({itemsRaw}) => {
                 <h1 className="t-h1 mb-16">Страница трекеров</h1>
                 <Link href={ROUTE.TRACKERS.slug + '/create'}>
                     <BButton rounded variant="secondary">
-                        <BIcon name="plus-square"/>
+                        <BIcon name="faPlusSquare"/>
                     </BButton>
                 </Link>
             </div>
 
-            <BTable columns={columns} items={items}/>
+            <BTable  dblClickHandler={editTracker} columns={columns} items={items}/>
         </div>
     )
 }

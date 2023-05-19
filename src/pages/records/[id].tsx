@@ -1,39 +1,38 @@
 import RecordForm from "@/components/form/RecordForm";
-import {IRecord, ITag} from "@/types";
-import dayjs from "dayjs";
+import {IRecord, ITag, ITracker} from "@/types";
 import {GetServerSideProps} from "next";
 import api from "@/api";
 import {IRecordRaw} from "@/types/api";
 import React from "react";
-import {getDefaultTime} from "@/utils";
-import {TRACKERS_LIST} from "@/config/base.config";
+import {getDefaultTime, parseDate} from "@/utils";
 
 interface Props {
     recordRaw: IRecordRaw
+    trackers: ITracker[]
 }
 
 
-const RecordEdit: React.FC<Props> = ({recordRaw}) => {
+const RecordEdit: React.FC<Props> = ({recordRaw, trackers}) => {
 
-    const trackers = recordRaw.trackers?.length
-        ? TRACKERS_LIST.map<ITag<boolean>>((el) => ({
-            key: el.key,
-            value: recordRaw.trackers.find((track) => track.key === el.key)?.value || false
+    const recordTrackers = recordRaw.trackers?.length
+        ? trackers.map<ITag<boolean>>((el) => ({
+            key: el.slug,
+            value: recordRaw.trackers.find((track) => track.key === el.slug)?.value || false
         }))
-        : TRACKERS_LIST.map<ITag<boolean>>((el) => ({key: el.key, value: false}))
+        : trackers.map<ITag<boolean>>((el) => ({key: el.slug, value: el.defaultValue}))
 
     const record: IRecord = {
         ...recordRaw,
-        trackers,
-        date: dayjs(recordRaw.date),
-        wakeTime: recordRaw.wakeTime ? dayjs(recordRaw.wakeTime) : getDefaultTime(),
-        sleepTime: recordRaw.sleepTime ? dayjs(recordRaw.sleepTime) : getDefaultTime()
+        trackers: recordTrackers,
+        date: parseDate(recordRaw.date),
+        wakeTime: recordRaw.wakeTime ? parseDate(recordRaw.wakeTime) : getDefaultTime(),
+        sleepTime: recordRaw.sleepTime ? parseDate(recordRaw.sleepTime) : getDefaultTime()
     }
 
     return (
         <div className="form-container">
             <h1 className="t-h1 mb-20">Редактировать запись</h1>
-            <RecordForm {...record} />
+            <RecordForm record={record} trackers={trackers} />
         </div>
     )
 }
@@ -41,10 +40,12 @@ export default RecordEdit
 
 export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
     try {
-        const response = await api.record.details(`${context.params?.id}`)
+        const {data: recordRaw} = await api.record.details(`${context.params?.id}`)
+        const {items: trackers} = await api.tracker.list()
         return {
             props: {
-                recordRaw: response.data
+                recordRaw,
+                trackers
             }
         }
     } catch (e) {

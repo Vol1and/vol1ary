@@ -24,7 +24,7 @@ const BTimePicker = <T extends FieldValues>({timeFormat = 'HH:mm',placeholder = 
                 {...field}
                 format={timeFormat}
                 placeholder={placeholder}
-                suffixIcon={<BIcon name={'calendar'}/>}
+                suffixIcon={<BIcon name={'faCalendar'}/>}
             />
         </div>
     )

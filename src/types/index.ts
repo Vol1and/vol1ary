@@ -17,6 +17,7 @@ export interface ITag<T = string> {
 
 export interface IRecord extends FormWithTasks {
     _id: string
+    slogan: string
     wakeTime: Dayjs
     sleepTime: Dayjs
     date: Dayjs
@@ -30,7 +31,7 @@ export interface IRecord extends FormWithTasks {
 
 export interface ITracker {
     _id: string
-    key: string
+    slug: string
     name: string
     recordLabel: string
     defaultValue: boolean
@@ -60,9 +61,7 @@ export interface ITimeframeTurn {
 }
 
 export interface ICountTurn {
-    turns: {
-        count: number
-    }[]
+    turns: number[]
     restBetweenTurns: number
 }
 
@@ -83,7 +82,7 @@ export interface ISidebarTree {
     title: string
     links: {
         link: string
-        icon: IconName
+        icon: string
         label: string
     }[]
 }

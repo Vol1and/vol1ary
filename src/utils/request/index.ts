@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { convertDataInFormData, showErrorResponse } from './helpers'
+import { showErrorResponse } from './helpers'
 import { Api, ApiError, ApiSuccess } from '@/api'
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api`

@@ -12,7 +12,7 @@ const BInput = <T extends FieldValues>(props: Props<T>) => {
     const {field} = useController(props);
 
     return (
-        <div className={`b-input-group`}>
+        <div className={`b-input-group ${props.className}`}>
 
             <div className="b-label">
                 {props.placeholder}

@@ -1,29 +1,30 @@
 import BTable, {ITableColumn} from "@/components/base/BTable/BTable";
 import {GetServerSideProps} from "next";
-import {IRecord} from "@/types";
+import {IRecord, ITracker} from "@/types";
 import api from "@/api";
 import React, {useState} from "react";
 import BButton from "@/components/base/BButton/BButton";
 import BIcon from "@/components/base/BIcon/BIcon";
 import Link from "next/link";
 import {ROUTE} from "@/routes";
-import dayjs from "dayjs";
 import {IRecordRaw} from "@/types/api";
-import {DATE_FORMAT, RECORD_RATE_LIST, TRACKERS_LIST} from "@/config/base.config";
+import {RECORD_RATE_LIST} from "@/config/base.config";
 import {notification} from "antd";
 import {useRouter} from "next/router";
+import {parseDate} from "@/utils";
 
 interface Props {
     itemsRaw: IRecordRaw[]
+    trackers: ITracker[]
 }
 
-const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
+const RecordList: React.FC<Props> = ({itemsRaw, trackers}, context) => {
 
     const [items, setItems] = useState<IRecord[]>(itemsRaw.map((el) => ({
         ...el,
-        date: dayjs(el.date),
-        wakeTime: dayjs(el.wakeTime),
-        sleepTime: dayjs(el.sleepTime)
+        date: parseDate(el.date),
+        wakeTime: parseDate(el.wakeTime),
+        sleepTime: parseDate(el.sleepTime)
     })));
 
     const router = useRouter();
@@ -36,11 +37,10 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
                 {RECORD_RATE_LIST.find((el => el.value === item.rate))?.label || 'Неопределено'}
             </div>)},
 
-        {cellClass: 'max-w-[450px]', label: 'Описание', value: (item) => item.description},
-
-        ...TRACKERS_LIST.map<ITableColumn<IRecord>>((el) => (
-            {cellClass: 'max-w-[70px]', label: (<BIcon name={el.key} />) , value: (item) =>
-                    item.trackers.find(track => track.key === el.key)?.value ? (<div className="text-green">Да</div>) : (<div className="text-red">Нет</div>)
+        {cellClass: 'max-w-[550px]', label: 'Описание', value: (item) => item.slogan || item.description},
+        ...trackers.filter((el) => el.isShow).map<ITableColumn<IRecord>>((el) => (
+            {cellClass: 'max-w-[70px]', label: (<BIcon name={el.slug} />) , value: (item) =>
+                    item.trackers.find(track => track.key === el.slug)?.value ? (<div className="text-green">Да</div>) : (<div className="text-red">Нет</div>)
                 }
             )),
     ]
@@ -52,9 +52,9 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
             const {items: newItems} = await api.record.list()
             setItems(newItems.map((el) => ({
                 ...el,
-                date: dayjs(el.date),
-                wakeTime: dayjs(el.wakeTime),
-                sleepTime: dayjs(el.sleepTime)
+                date: parseDate(el.date),
+                wakeTime: parseDate(el.wakeTime),
+                sleepTime: parseDate(el.sleepTime)
             })))
         } catch (e) {
             console.log(e)
@@ -77,7 +77,7 @@ const RecordList: React.FC<Props> = ({itemsRaw}, context) => {
                 <h1 className="t-h1 mb-16">Страница записей</h1>
                 <Link href={ROUTE.RECORDS.slug + '/create'}>
                     <BButton rounded variant="secondary">
-                        <BIcon name="calendar-plus"/>
+                        <BIcon name="faCalendarPlus"/>
                     </BButton>
                 </Link>
             </div>
@@ -90,9 +90,11 @@ export default RecordList
 export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
 
     const {items} = await api.record.list()
+    const {items: trackers} = await api.tracker.list()
     return {
         props: {
-            itemsRaw: items
+            itemsRaw: items,
+            trackers
         }
     }
 }

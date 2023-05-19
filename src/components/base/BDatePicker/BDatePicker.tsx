@@ -30,7 +30,7 @@ const BDatePicker = <T extends FieldValues>({dateFormat = DATE_FORMAT, placehold
             format={dateFormat}
             inputReadOnly
             placeholder={placeholder}
-            suffixIcon={<BIcon name={'calendar'}/>}
+            suffixIcon={<BIcon name={'faCalendar'}/>}
         />
         </div>
     )

@@ -7,7 +7,7 @@ const TrackerCreate = () => {
 
     const tracker: ITracker = {
         _id: '',
-        key: '',
+        slug: '',
         name: '',
         recordLabel: '',
         isShow: false,

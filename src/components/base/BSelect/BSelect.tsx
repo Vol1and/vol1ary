@@ -16,7 +16,7 @@ const BSelect = <T extends FieldValues>(props: Props<T>) => {
     const {field} = useController(props);
 
     return (
-        <div className={`relative`}>
+        <div className={`relative ${props.className}`}>
             <label className="b-label">
                 {props.placeholder}
             </label>
