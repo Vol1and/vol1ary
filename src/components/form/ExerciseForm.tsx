@@ -43,7 +43,6 @@ const ExerciseForm: React.FC<IExercise> = (exercise) => {
     return (
         <form className="card form__exercise" onSubmit={handleSubmit(submit)}>
             <BInput required placeholder="Название упражнения" name="name" control={control}/>
-            <BInput required placeholder="Ключ упражнения" name="slug" control={control}/>
             <BSelect required options={EXERCISE_TYPES_LIST} placeholder="Тип упражнения" name="type" control={control}/>
 
             <div className="flex justify-end gap-20">

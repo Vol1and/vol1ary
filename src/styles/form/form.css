@@ -6,11 +6,31 @@
 
 .form {
 
+  &__workout {
+       @apply w-[1000px];
+
+    &-body {
+         @apply flex gap-40 mb-20;
+     }
+
+    &-inputs {
+       @apply w-[300px] flex flex-col gap-20;
+
+       textarea {
+           @apply min-h-[300px]
+       }
+     }
+
+    &-exercises {
+        @apply  flex flex-col gap-20;
+     }
+   }
+
   &__record {
    @apply w-[1200px];
 
       &-body {
-            @apply flex gap-20 mb-20;
+        @apply flex gap-20 mb-20;
        }
 
       &-statuses {

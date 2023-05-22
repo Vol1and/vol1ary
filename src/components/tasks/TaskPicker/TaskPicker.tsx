@@ -45,7 +45,7 @@ const TaskPicker: React.FC<Props> = ({control}) => {
                     variant="secondary"
                     onClick={addTask}
                 >
-                    <BIcon name={'folder-plus'} />
+                    <BIcon name={'faFolderPlus'} />
                 </BButton>
             </div>
         </div>

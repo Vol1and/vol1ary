@@ -44,7 +44,7 @@ const TrackerForm: React.FC<ITracker> = (tracker) => {
         <form className="card form__tracker" onSubmit={handleSubmit(submit)}>
             <BInput required placeholder="Название трекера" name="name" control={control} />
             <BInput required placeholder="Название ежедневной задачи" name="recordLabel" control={control} />
-            <BInput required placeholder="Ключ трекера" name="key" control={control} />
+            <BInput required placeholder="Ключ трекера" name="slug" control={control} />
             <BCheckbox name="defaultValue" label="Положительно по умолчанию" control={control} />
             <BCheckbox name="isShow" label="Показывать в таблице" control={control} />
 

@@ -1,5 +1,4 @@
 import {FieldValues, useController, UseControllerProps} from "react-hook-form";
-import {InputHTMLAttributes} from "react";
 
 
 interface Props<T extends FieldValues> extends UseControllerProps<T> {
@@ -12,8 +11,9 @@ const BCheckbox = <T extends FieldValues>(props: Props<T>) => {
     const {field} = useController(props);
 
     return (
-        <div className="flex gap-12 items-center">
+        <div onClick={() => field.onChange(!field.value)} className="flex gap-12 items-center cursor-pointer">
             <input
+                className="cursor-pointer"
                 type="checkbox"
                 checked={!!field.value}
                 {...field}

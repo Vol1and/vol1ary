@@ -6,18 +6,23 @@ import {useRouter} from "next/router";
 import BDatePicker from "@/components/base/BDatePicker/BDatePicker";
 import {ROUTE} from "@/routes";
 import React from "react";
-import {IRecord} from "@/types";
+import {IRecord, ITracker} from "@/types";
 import {notification} from "antd";
 import BTextarea from "@/components/base/BTextarea/BTextarea";
 import TaskPicker from "@/components/tasks/TaskPicker/TaskPicker";
 import BTimePicker from "@/components/base/BTimePicker/BTimePicker";
 import BSelect from "@/components/base/BSelect/BSelect";
-import {RECORD_RATE_LIST, TRACKERS_LIST} from "@/config/base.config";
+import {RECORD_RATE_LIST} from "@/config/base.config";
 import BCheckbox from "@/components/base/BCheckbox/BCheckbox";
 
 
+interface Props {
+    record: IRecord,
+    trackers: ITracker[]
+}
 
-const RecordForm: React.FC<IRecord> = (record) => {
+
+const RecordForm: React.FC<Props> = ({record, trackers}) => {
 
     const {control, getValues, handleSubmit} = useForm<IRecord>({
         mode: "onChange",
@@ -62,15 +67,20 @@ const RecordForm: React.FC<IRecord> = (record) => {
                         <TaskPicker control={control} />
                     </div>
                     <div className="w-full">
+                        <BInput className="mb-20" name="slogan" control={control} placeholder="Название дню" />
                         <BTextarea className="form__record-textarea" control={control} name="description" placeholder="Что сегодня было?"/>
                         <BTextarea className="form__record-textarea" control={control} name="physicalDescription" placeholder="Физическое самочувствие"/>
                         <BTextarea className="form__record-textarea" control={control} name="mentalDescription" placeholder="Ментальное самочувствие"/>
                     </div>
 
                     <div className="form__record-statuses">
-                        {fields.map(((el,idx) => (
-                            <BCheckbox key={idx} control={control} name={`trackers.${idx}.value`} label={TRACKERS_LIST[idx].value} />
-                        )))}
+                        {fields.map(((el,idx) => {
+                            if(trackers[idx].isShow) {
+                                return (
+                                    <BCheckbox key={idx} control={control} name={`trackers.${idx}.value`} label={trackers[idx].recordLabel} />
+                                )
+                            }
+                        }))}
                     </div>
                 </div>
 

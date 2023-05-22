@@ -6,7 +6,6 @@ const ExerciseCreate = () => {
 
     const exercise: IExercise = {
         _id: '',
-        slug: '',
         name: '',
         type: 'weight'
     }

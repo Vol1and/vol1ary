@@ -1,4 +1,3 @@
-import {IconName} from "@fortawesome/free-solid-svg-icons";
 import {Dayjs} from "dayjs";
 
 export interface ITask {
@@ -43,34 +42,31 @@ export interface IWorkout {
     _id: string
     date: Dayjs
     description: string
-    exercises: {
+    timeframeExercises: {
         exercise: IExercise
-        turn?: ICountTurn | ITimeframeTurn | IWeightTurn
+        time: Dayjs
+    }[]
+    weightExercises: {
+        exercise: IExercise
+        turns: {
+            count: number
+            weight: number
+        }[]
+        restBetweenTurns: number
+    }[]
+    countExercises: {
+        exercise: IExercise
+        turns: {
+            count: number
+        }[]
+        restBetweenTurns: number
     }[]
 }
 
 export interface IExercise {
     _id: string
-    slug: string
     name: string
     type: 'timeframe' | 'count' | 'weight' | 'none'
-}
-
-export interface ITimeframeTurn {
-    time: Dayjs
-}
-
-export interface ICountTurn {
-    turns: number[]
-    restBetweenTurns: number
-}
-
-export interface IWeightTurn {
-    turns: {
-        count: number
-        weight: number
-    }[]
-    restBetweenTurns: number
 }
 
 export interface ISprint {

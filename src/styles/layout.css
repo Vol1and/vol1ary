@@ -15,7 +15,7 @@
 
 .navbar {
     @apply w-full select-none fixed bg-primary border-b-[1px] border-additional-1 transition
-    h-[var(--h-header)] md:h-[var(--h-header-md)] lg:h-[var(--h-header-lg)] z-[2];
+    h-[var(--h-header)] md:h-[var(--h-header-md)] lg:h-[var(--h-header-lg)] z-[1000];
 }
 
 .sidebar {

@@ -12,7 +12,7 @@ const ExerciseEdit: React.FC<Props> = ({exercise}) => {
 
     return (
         <div className="form-container">
-            <h1 className="t-h1 mb-20">Новое упражнение</h1>
+            <h1 className="t-h1 mb-20">Редактировать упражнение</h1>
             <ExerciseForm {...exercise} />
         </div>
     )

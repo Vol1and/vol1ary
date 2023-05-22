@@ -5,7 +5,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary'
     rounded?: boolean
     flat?: boolean
-    size?: 'sm' | 'md' | 'lg'
+    size?: 'xs' | 'sm' | 'md' | 'lg'
 }
 
 const BButton: React.FC<ButtonProps> = ({type="button", variant = 'primary', size = 'md', flat = false, className, rounded = false, ...props}) => {
