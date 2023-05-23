@@ -1,5 +1,5 @@
 .b-table {
-    @apply bg-white rounded-[4px] w-full text-primary w-full;
+    @apply bg-white border-purple border-[1px] w-full text-primary w-full;
     box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
 
     table {
@@ -7,9 +7,10 @@
     }
 
     &__header {
+        @apply border-b-[3px] border-b-purple;
 
         &-cell {
-             @apply px-16 py-10 t-p1 font-semibold border-r border-r-purple border-b border-b-purple;
+             @apply text-left px-16 py-10 t-p1 font-semibold bg-purple/40;
 
             svg {
                 @apply h-26;
@@ -28,7 +29,7 @@
          }
 
         &-cell {
-            @apply px-16 py-[7px] border-r border-r-purple border-b border-b-purple
+            @apply px-16 py-[7px] border-b-[1px] border-b-purple
             whitespace-nowrap overflow-x-hidden overflow-ellipsis;
          }
      }

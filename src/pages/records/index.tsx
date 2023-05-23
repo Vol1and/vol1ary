@@ -30,7 +30,7 @@ const RecordList: React.FC<Props> = ({itemsRaw, trackers}, context) => {
     const router = useRouter();
 
     const columns: ITableColumn<IRecord>[] = [
-        {cellClass: 'max-w-[100px]', label: 'Дата', value: (item) => item.date.format('DD.MM.YY') },
+        {cellClass: 'max-w-[140px]', label: 'Дата', value: (item) => item.date.format('DD MMMM YY') },
 
         {cellClass: 'max-w-[10px]',  label: 'Оценка', value: (item) => (
             <div className={`record-rate-cell-${item.rate}`}>
@@ -39,8 +39,10 @@ const RecordList: React.FC<Props> = ({itemsRaw, trackers}, context) => {
 
         {cellClass: 'max-w-[550px]', label: 'Описание', value: (item) => item.slogan || item.description},
         ...trackers.filter((el) => el.isShow).map<ITableColumn<IRecord>>((el) => (
-            {cellClass: 'max-w-[70px]', label: (<BIcon name={el.slug} />) , value: (item) =>
-                    item.trackers.find(track => track.key === el.slug)?.value ? (<div className="text-green">Да</div>) : (<div className="text-red">Нет</div>)
+            {cellClass: 'max-w-[60px]', label: (<BIcon className="m-auto" name={el.slug} />) , value: (item) =>
+                    item.trackers.find(track => track.key === el.slug)?.value
+                        ? (<BIcon name="faCircleCheck" className="m-auto w-[30px] text-green/70"/>)
+                        : (<BIcon name="faCircleXmark" className="m-auto w-[30px] text-red/70" />)
                 }
             )),
     ]
@@ -74,7 +76,7 @@ const RecordList: React.FC<Props> = ({itemsRaw, trackers}, context) => {
     return (
         <div>
             <div className="flex justify-between items-center">
-                <h1 className="t-h1 mb-16">Страница записей</h1>
+                <h1 className="t-h1 mb-16">Ежедневные записи</h1>
                 <Link href={ROUTE.RECORDS.slug + '/create'}>
                     <BButton rounded variant="secondary">
                         <BIcon name="faCalendarPlus"/>
