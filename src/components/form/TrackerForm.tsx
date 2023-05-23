@@ -1,28 +1,24 @@
 import React from "react";
 import {ITracker} from "@/types";
 import {useForm} from "react-hook-form";
-import {useRouter} from "next/router";
-import {ROUTE} from "@/routes";
 import api from "@/api";
 import {notification} from "antd";
 import BButton from "@/components/base/BButton/BButton";
 import BInput from "../base/BInput/BInput";
 import BCheckbox from "@/components/base/BCheckbox/BCheckbox";
 
+interface Props {
+    tracker: ITracker
+    success: () => void
+    close: () => void
+}
 
-const TrackerForm: React.FC<ITracker> = (tracker) => {
+const TrackerForm: React.FC<Props> = ({tracker, success, close}) => {
 
     const {control, getValues, handleSubmit} = useForm<ITracker>({
         mode: "onChange",
         values: tracker
     });
-
-
-    const router = useRouter();
-
-    const goBack = async () => {
-        await router.push(ROUTE.TRACKERS.slug)
-    }
 
     const submit = async () => {
         try {
@@ -34,7 +30,7 @@ const TrackerForm: React.FC<ITracker> = (tracker) => {
                 await api.tracker.create(tracker)
                 notification.success({message: 'Запись о трекере успешно создана'})
             }
-            await router.push(ROUTE.TRACKERS.slug)
+            success()
         } catch (e) {
             notification.error({message: 'Ошибка во время создания трекера'})
         }
@@ -42,6 +38,7 @@ const TrackerForm: React.FC<ITracker> = (tracker) => {
 
     return (
         <form className="card form__tracker" onSubmit={handleSubmit(submit)}>
+            <h2 className="t-h2">{tracker._id ? 'Изменить трекер' : 'Новый трекер'}</h2>
             <BInput required placeholder="Название трекера" name="name" control={control} />
             <BInput required placeholder="Название ежедневной задачи" name="recordLabel" control={control} />
             <BInput required placeholder="Ключ трекера" name="slug" control={control} />
@@ -50,7 +47,7 @@ const TrackerForm: React.FC<ITracker> = (tracker) => {
 
             <div className="flex justify-end gap-20">
                 <BButton className="w-[160px]" type="submit">Сохранить</BButton>
-                <BButton onClick={goBack} className="w-[160px]" type="button" variant="secondary">Отмена</BButton>
+                <BButton onClick={close} className="w-[160px]" type="button" variant="secondary">Отмена</BButton>
             </div>
         </form>)
 }

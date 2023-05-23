@@ -1,0 +1,29 @@
+.modal {
+    @apply fixed inset-0 flex items-center justify-center z-[100] transition;
+    @apply py-16 px-16;
+
+&-content {
+     @apply relative max-h-full bg-white overflow-auto rounded z-[102];
+     @apply mobile:px-16 p-40;
+
+.close {
+    @apply absolute text-black hover:text-green cursor-pointer transition
+    top-16 right-16
+    md:top-20 md:right-20
+    lg:top-20 lg:right-20;
+}
+}
+
+&-overflow {
+     @apply fixed inset-0 bg-black/30 z-[101];
+ }
+
+.modal-content {
+    --max-width-md: calc(theme(screens.md) - theme(container.padding.md) * 2);
+    --max-width-lg: calc(theme(screens.lg) - theme(container.padding.lg) * 2);
+
+    @apply p-0
+    md:max-w-[var(--max-width-md)]
+    lg:max-w-[var(--max-width-lg)];
+}
+}
