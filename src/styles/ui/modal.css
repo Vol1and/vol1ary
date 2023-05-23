@@ -7,7 +7,7 @@
      @apply mobile:px-16 p-40;
 
 .close {
-    @apply absolute text-black hover:text-green cursor-pointer transition
+    @apply absolute text-black cursor-pointer transition
     top-16 right-16
     md:top-20 md:right-20
     lg:top-20 lg:right-20;

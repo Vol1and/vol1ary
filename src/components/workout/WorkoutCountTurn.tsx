@@ -4,13 +4,12 @@ import BInput from "@/components/base/BInput/BInput";
 import {ControllerRenderProps, useController, UseControllerProps, useFieldArray} from "react-hook-form";
 import BButton from "../base/BButton/BButton";
 
-interface Props extends UseControllerProps<IWorkout> {
+interface Props extends UseControllerProps<IWorkout, `countExercises.${number}` > {
 }
 
 const WorkoutCountTurn: React.FC<Props> = ({control, name}) => {
 
-    //@ts-ignore
-    const {field}: { field: ControllerRenderProps<IWorkout, `countExercises.${number}`> } = useController({
+    const {field} = useController({
         control,
         name
     });

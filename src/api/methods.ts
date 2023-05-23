@@ -5,6 +5,10 @@ import recordDelete from './record/delete'
 import recordDetails from './record/details'
 import recordUpdate from './record/update'
 
+import sprintList from './sprint/list'
+import sprintCreate from './sprint/create'
+import sprintDetails from './sprint/details'
+import sprintUpdate from './sprint/update'
 
 import trackerList from './tracker/list'
 import trackerCreate from './tracker/create'
@@ -31,6 +35,12 @@ export default {
         delete: recordDelete,
         details: recordDetails,
         update: recordUpdate
+    },
+    sprint: {
+        list: sprintList,
+        create: sprintCreate,
+        details: sprintDetails,
+        update: sprintUpdate
     },
     tracker: {
         list: trackerList,

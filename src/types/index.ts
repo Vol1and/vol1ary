@@ -70,8 +70,15 @@ export interface IExercise {
 }
 
 export interface ISprint {
+    _id: string
+    title: string
     startDate: Dayjs,
     endDate: Dayjs
+    tasks: {
+        title: string
+        purpose: string
+        subtasks: string[]
+    }[]
 }
 
 export interface ISidebarTree {
