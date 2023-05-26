@@ -11,3 +11,8 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: development
+    networks:
+      - vol1ary-back_net
+networks:
+  vol1ary-back_net:
+    external: true

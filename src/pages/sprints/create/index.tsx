@@ -1,16 +1,18 @@
 import React from "react";
 import SprintForm from "@/components/form/SprintForm";
-import {ISprint} from "@/types";
+import {ISprint, ISprintSubtask, ISprintTask} from "@/types";
 import dayjs from "dayjs";
 import {SPRINT_DURATION_WEEKS} from "@/config/base.config";
 
 
 const SprintCreate = () => {
 
-    const task = {
+    const subtask: ISprintSubtask = {name: '', status: 'pending'}
+
+    const task: ISprintTask = {
         title: '',
         purpose: '',
-        subtasks: ['','','','','','','']
+        subtasks: [subtask,subtask,subtask,subtask,subtask,subtask,subtask]
     }
 
     const sprint: ISprint = {

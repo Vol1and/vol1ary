@@ -5,12 +5,12 @@ import {useRouter} from "next/router";
 import classNames from "classnames";
 import {IconName} from "@fortawesome/free-solid-svg-icons";
 
-export interface SidebarLinkProps extends PropsWithChildren {
+export interface Props extends PropsWithChildren {
     link: string
-    icon?: IconName
+    icon?: string
 }
 
-const SidebarLink: React.FC<SidebarLinkProps>  = ({...props}) => {
+const SidebarLink: React.FC<Props>  = ({...props}) => {
 
     const {route} = useRouter();
 

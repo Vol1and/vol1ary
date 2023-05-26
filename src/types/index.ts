@@ -74,11 +74,18 @@ export interface ISprint {
     title: string
     startDate: Dayjs,
     endDate: Dayjs
-    tasks: {
-        title: string
-        purpose: string
-        subtasks: string[]
-    }[]
+    tasks: ISprintTask[]
+}
+
+export interface ISprintTask {
+    title: string
+    purpose: string
+    subtasks: ISprintSubtask[]
+}
+
+export interface ISprintSubtask {
+    name: string
+    status: 'failed' | 'pending' | 'success'
 }
 
 export interface ISidebarTree {

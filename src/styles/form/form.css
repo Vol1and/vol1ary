@@ -46,6 +46,6 @@
     }
 
     &__sprint {
-         @apply flex flex-col gap-20
+         @apply flex flex-col gap-20 w-[1500px];
      }
 }
