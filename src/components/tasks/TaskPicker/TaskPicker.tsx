@@ -1,8 +1,7 @@
-import {Control, useFieldArray} from "react-hook-form";
+import {Control, Controller, useFieldArray} from "react-hook-form";
 import BButton from "@/components/base/BButton/BButton";
 import BIcon from "@/components/base/BIcon/BIcon";
 import {IRecord, ITask} from "@/types";
-import {notification} from "antd";
 import React from "react";
 
 interface Props {
@@ -11,29 +10,52 @@ interface Props {
 
 const TaskPicker: React.FC<Props> = ({control}) => {
 
-    const {fields, append, update} = useFieldArray<IRecord, 'tasks'>({
+    const {fields, append, update} = useFieldArray({
         control, name: 'tasks'
     });
 
-    const addTask = () => {
-        !fields.find((el) => !el.label)
-            ? append({label: '', status: 'active'})
-            : notification.error({message: 'Уже есть пустое задание'})
+    const setStatus = (status: ITask['status'], idx: number) => {
+        update(idx, {...fields[idx], status})
     }
 
-    const changeItem = (e: React.ChangeEvent<HTMLInputElement>, task: ITask, idx: number) => {
-        task.label = e.target.value
-        update(idx, task);
+
+    const addTask = () => {
+        append({label: '', status: 'active'})
     }
 
     return (
         <div className="flex flex-col gap-6">
-            <div className="t-p2">Задания</div>
             <div className="task-picker card">
                 {
                     fields.map((el: ITask, idx) => (
-                        <div key={idx} className="task-element">
-                            <input onChange={(e) => changeItem(e, el, idx)}/>
+                        <div key={idx} className={`task-element task-element--${el.status}`}>
+                            <Controller
+                                control={control}
+                                name={`tasks.${idx}.label`}
+                                render={({ field }) => {
+                                    return <input {...field}  className="w-full" />; // ✅
+                                }}
+                            />
+                            <div className="toolbar">
+                                <BButton
+                                    size="sm"
+                                    rounded
+                                    flat
+                                    variant="secondary"
+                                    onClick={() => setStatus('cancelled', idx)}
+                                >
+                                    <BIcon name={'faXmark'} />
+                                </BButton>
+                                <BButton
+                                    size="sm"
+                                    rounded
+                                    flat
+                                    variant="secondary"
+                                    onClick={() => setStatus('done', idx)}
+                                >
+                                    <BIcon name={'faCheck'} />
+                                </BButton>
+                            </div>
                         </div>
                     ))
                 }

@@ -34,7 +34,7 @@
        }
 
       &-statuses {
-        @apply w-[300px] flex flex-col gap-20;
+        @apply w-[400px] flex flex-col gap-20;
       }
       &-textarea {
         @apply min-h-[56px] h-[250px] mb-16;

@@ -1,3 +1,4 @@
+import {IRecord, ITag, ITracker} from "@/types";
 import dayjs from "dayjs";
 
 import timezone from 'dayjs/plugin/timezone';
@@ -9,6 +10,25 @@ dayjs.extend(timezone)
 
 export const getDefaultTime = () => {
     return dayjs('00:00', 'HH:mm')
+}
+
+export const getDefaultRecord = (trackers: ITracker[]): IRecord => {
+
+    const recordTrackers: ITag<boolean>[] = trackers.map<ITag<boolean>>((el) => ({key: el.slug, value: el.defaultValue}))
+
+    return {
+        _id: '',
+        slogan: '',
+        tasks: [{status: "active", label: ''}],
+        description: '',
+        physicalDescription: '',
+        mentalDescription: '',
+        date: dayjs(),
+        wakeTime: getDefaultTime(),
+        sleepTime: getDefaultTime(),
+        rate: 5,
+        trackers: recordTrackers
+    }
 }
 
 export const parseDate = (date: string) => {

@@ -4,6 +4,7 @@ import recordCreate from './record/create'
 import recordDelete from './record/delete'
 import recordDetails from './record/details'
 import recordUpdate from './record/update'
+import recordIsTaskCreator from './record/isTaskCreator'
 
 import sprintList from './sprint/list'
 import sprintCreate from './sprint/create'
@@ -34,7 +35,8 @@ export default {
         create: recordCreate,
         delete: recordDelete,
         details: recordDetails,
-        update: recordUpdate
+        update: recordUpdate,
+        isTaskCreator: recordIsTaskCreator
     },
     sprint: {
         list: sprintList,

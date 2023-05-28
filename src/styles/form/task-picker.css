@@ -3,11 +3,38 @@
 }
 
 .task-element {
-  @apply border-b-purple border-b-[0.5px] w-full p-4 t-p2;
+  @apply relative border-b-purple border-b-[0.5px] w-full p-4 t-p2;
     &:first-child {
         @apply border-t-purple border-t-[0.5px]
      }
+    &:hover {
+     .toolbar {
+         @apply opacity-100
+     }
+     }
+
     > input {
-      @apply outline-none;
-  }
+          @apply outline-none;
+
+      }
+
+    &--done {
+        > input {
+            @apply text-green;
+        }
+     }
+
+    &--cancelled {
+        > input {
+            @apply text-red;
+        }
+    }
+
+    .toolbar {
+        @apply opacity-0 absolute -left-88 top-0 z-[100] pl-8 flex gap-4;
+
+        &:hover {
+           @apply opacity-100
+        }
+     }
 }
