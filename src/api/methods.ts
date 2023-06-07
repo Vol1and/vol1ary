@@ -17,6 +17,13 @@ import trackerDelete from './tracker/delete'
 import trackerDetails from './tracker/details'
 import trackerUpdate from './tracker/update'
 
+import weekList from './week/list'
+import weekCreate from './week/create'
+import weekDelete from './week/delete'
+import weekDetails from './week/details'
+import weekUpdate from './week/update'
+import weekIsTaskCreator from './week/isTaskCreator'
+
 import exerciseList from './exercise/list'
 import exerciseCreate from './exercise/create'
 import exerciseDelete from './exercise/delete'
@@ -50,6 +57,14 @@ export default {
         delete: trackerDelete,
         details: trackerDetails,
         update: trackerUpdate
+    },
+    week: {
+        list: weekList,
+        create: weekCreate,
+        delete: weekDelete,
+        details: weekDetails,
+        update: weekUpdate,
+        isTaskCreator: weekIsTaskCreator
     },
     exercise: {
         list: exerciseList,

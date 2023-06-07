@@ -6,6 +6,25 @@
 
 .form {
 
+  &__week {
+
+    &-body {
+        @apply flex gap-16 mb-16;
+     }
+    &-first {
+        @apply flex flex-col gap-16 min-w-[300px];
+     }
+    &-second {
+        @apply flex flex-col gap-16 w-full;
+     }
+     &-textarea {
+        @apply min-h-[140px];
+      }
+     &-end {
+        @apply text-20 mb-8
+      }
+   }
+
   &__workout {
        @apply w-[1000px];
 

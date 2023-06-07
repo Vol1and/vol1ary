@@ -15,7 +15,6 @@ import BSelect from "@/components/base/BSelect/BSelect";
 import {RECORD_RATE_LIST} from "@/config/base.config";
 import BCheckbox from "@/components/base/BCheckbox/BCheckbox";
 import BModal from "@/components/base/BModal/BModal";
-import ExerciseForm from "@/components/form/ExerciseForm";
 import {getDefaultRecord} from "@/utils";
 
 
@@ -107,6 +106,7 @@ const RecordForm: React.FC<Props> = ({record, trackers}) => {
                         <BSelect control={control} name={'rate'} options={RECORD_RATE_LIST} placeholder={"Оценка дня"}/>
                         <div>
                             <div className="t-p2">Задания</div>
+                            {/* @ts-ignore */}
                             <TaskPicker control={control}/>
                         </div>
                     </div>
@@ -142,6 +142,7 @@ const RecordForm: React.FC<Props> = ({record, trackers}) => {
             <BModal isOpen={isModal} onClose={closeModal}>
                 <form onSubmit={newRecordForm.handleSubmit(submitModal)} className="p-24 flex flex-col gap-16">
                     <h3 className="t-h3">Задания на завтра</h3>
+                    {/* @ts-ignore */}
                     <TaskPicker control={newRecordForm.control} />
                     <div className="flex justify-end gap-20">
                         <BButton className="w-[160px]" type="submit">Сохранить</BButton>

@@ -1,14 +1,14 @@
 import {Control, Controller, useFieldArray} from "react-hook-form";
 import BButton from "@/components/base/BButton/BButton";
 import BIcon from "@/components/base/BIcon/BIcon";
-import {IRecord, ITask} from "@/types";
+import {FormWithTasks, IRecord, ITask, IWeek} from "@/types";
 import React from "react";
 
-interface Props {
-    control: Control<IRecord>
+interface Props<T extends FormWithTasks> {
+    control: Control<T>
 }
 
-const TaskPicker: React.FC<Props> = ({control}) => {
+const TaskPicker: React.FC<Props<IRecord | IWeek>> = ({control}) => {
 
     const {fields, append, update} = useFieldArray({
         control, name: 'tasks'

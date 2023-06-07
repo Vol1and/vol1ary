@@ -23,9 +23,20 @@ export interface IRecord extends FormWithTasks {
     description: string
     physicalDescription: string
     mentalDescription: string
-    tasks: ITask[]
     rate: number
     trackers: ITag<boolean>[]
+}
+
+export interface IWeek extends FormWithTasks{
+    _id: string
+    date: Dayjs
+    slogan: string
+    mentalRate: number
+    productivityRate: number
+    description: string
+    firstTask: string
+    secondTask: string
+    thirdTask: string
 }
 
 export interface ITracker {

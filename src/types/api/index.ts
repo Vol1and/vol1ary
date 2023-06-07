@@ -1,5 +1,5 @@
 // Структура ответа от API
-import {IRecord, ISprint, IWorkout} from "@/types";
+import {IRecord, ISprint, IWeek, IWorkout} from "@/types";
 
 interface ErrorCustomData {
   text: string
@@ -19,6 +19,9 @@ export interface FormResponse {
   success: boolean
 }
 
+export interface IWeekRaw extends Omit<IWeek, 'date'>{
+  date: string
+}
 
 export interface IRecordRaw extends Omit<IRecord, 'wakeTime' | 'sleepTime' | 'date'>{
   date: string

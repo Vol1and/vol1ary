@@ -1,4 +1,4 @@
-import {IRecord, ITag, ITracker} from "@/types";
+import {IRecord, ITag, ITracker, IWeek} from "@/types";
 import dayjs from "dayjs";
 
 import timezone from 'dayjs/plugin/timezone';
@@ -11,6 +11,19 @@ dayjs.extend(timezone)
 export const getDefaultTime = () => {
     return dayjs('00:00', 'HH:mm')
 }
+
+export const getDefaultWeek = (): IWeek => ({
+    _id: '',
+    slogan: '',
+    tasks: [{status: "active", label: ''}],
+    description: '',
+    date: dayjs(),
+    mentalRate: 2,
+    productivityRate: 3,
+    firstTask: '',
+    secondTask: '',
+    thirdTask: ''
+})
 
 export const getDefaultRecord = (trackers: ITracker[]): IRecord => {
 

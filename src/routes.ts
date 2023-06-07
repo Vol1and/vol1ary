@@ -1,5 +1,5 @@
 
-export type RouteKey = 'records' | 'trackers' | 'sprints' | 'workout' | 'exercises'
+export type RouteKey = 'records' | 'trackers' | 'sprints' | 'workout' | 'exercises' | 'weeks'
 
 
 export interface RouteData {
@@ -9,6 +9,10 @@ export interface RouteData {
 }
 
 export const ROUTE: Record<Uppercase<RouteKey>, RouteData> = {
+  WEEKS: {
+    title: 'Еженедельные отчеты',
+    slug: '/weeks'
+  },
   RECORDS: {
     title: 'Записи',
     slug: '/records',
