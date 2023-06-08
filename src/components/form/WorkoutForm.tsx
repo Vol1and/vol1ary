@@ -11,6 +11,7 @@ import BTextarea from "@/components/base/BTextarea/BTextarea";
 import BIcon from "@/components/base/BIcon/BIcon";
 import BSelect, { ISelectOption } from "@/components/base/BSelect/BSelect";
 import WorkoutCountTurn from "../workout/WorkoutCountTurn";
+import WorkoutWeightTurn from "@/components/workout/WorkoutWeightTurn";
 
 interface Props {
     workout: IWorkout
@@ -27,32 +28,48 @@ const WorkoutForm: React.FC<Props> = ({workout, exercises}, ) => {
     }))
 
     const {control, getValues, handleSubmit} = useForm<IWorkout>({
-        mode: "onChange",
+        mode: "all",
         values: workout,
         defaultValues: workout
+    });
+
+    const {fields: weightExercises, append: appendWeightExercises} = useFieldArray<IWorkout, 'weightExercises'>({
+        control, name: 'weightExercises'
     });
 
     const {fields: countExercises, append: appendCountExercises} = useFieldArray<IWorkout, 'countExercises'>({
         control, name: 'countExercises'
     });
 
-    const {control: exerciseControl, getValues: getExerciseValue} = useForm<{exerciseToAdd: ISelectOption}>({
+    const {control: exerciseControl, getValues: getExerciseValue} = useForm<{exerciseToAdd: ISelectOption["value"]}>({
         mode: "onChange",
         values: {
-            exerciseToAdd: exercisesOptions[0]
+            exerciseToAdd: exercisesOptions[0].value
         }
     });
 
     const addExercise = () => {
         const {exerciseToAdd} = getExerciseValue();
-        const exercise = exercises.find(value => value._id === exerciseToAdd.value);
+        const exercise = exercises.find(value => value._id === exerciseToAdd);
 
         if(exercise) {
-            appendCountExercises({
-                exercise,
-                turns: [{count: 0}],
-                restBetweenTurns: 60
-            });
+            switch (exercise.type) {
+                case "count":
+                    appendCountExercises({
+                        exercise,
+                        turns: [{count: 0}],
+                        restBetweenTurns: 60
+                    });
+                    break;
+                case "weight":
+                    appendWeightExercises({
+                        exercise,
+                        turns: [{count: 0, weight: 0}],
+                        restBetweenTurns: 0
+                    });
+                    break;
+            }
+
         }
 
     }
@@ -64,6 +81,7 @@ const WorkoutForm: React.FC<Props> = ({workout, exercises}, ) => {
     const submit = async () => {
         try {
             const workout = getValues();
+            console.log(workout)
             if (workout._id) {
                 await api.workout.update(workout)
                 notification.success({message: 'Запись об упражнении успешно изменена'})
@@ -71,7 +89,7 @@ const WorkoutForm: React.FC<Props> = ({workout, exercises}, ) => {
                 await api.workout.create(workout)
                 notification.success({message: 'Запись об упражнении успешно создана'})
             }
-            await router.push(ROUTE.WORKOUT.slug)
+            //await router.push(ROUTE.WORKOUT.slug)
         } catch (e) {
             notification.error({message: 'Ошибка во время создания упражнения'})
         }
@@ -98,8 +116,13 @@ const WorkoutForm: React.FC<Props> = ({workout, exercises}, ) => {
                     <div className="flex flex-col gap-16">
                         {
                             countExercises.map((el, idx) => (
-                                        <WorkoutCountTurn control={control} name={`countExercises.${idx}`} key={idx} />
+                                        <WorkoutCountTurn control={control} name={`countExercises.${idx}`} key={`countExercise-${idx}`} />
                                     ))
+                        }
+                        {
+                            weightExercises.map((el, idx) => (
+                                <WorkoutWeightTurn control={control} name={`weightExercises.${idx}`} key={`weightExercise-${idx}`} />
+                            ))
                         }
                     </div>
                 </div>

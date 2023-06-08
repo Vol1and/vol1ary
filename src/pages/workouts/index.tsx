@@ -26,7 +26,10 @@ const WorkoutList: React.FC<Props> = ({itemsRaw}, context) => {
         {
             cellClass: 'max-w-[800px]',
             label: 'Упражнения',
-            value: (item) => item.countExercises.map(el => el.exercise?.name).join('; ')
+            value: (item) => [item.countExercises, item.weightExercises]
+                .map(arr => arr.map(el => el.exercise?.name).join(' | '))
+                .filter(el => !!el)
+                .join(' | ')
         },
     ]
 
