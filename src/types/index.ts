@@ -27,6 +27,14 @@ export interface IRecord extends FormWithTasks {
     trackers: ITag<boolean>[]
 }
 
+export interface IRecordListElement {
+    _id: string
+    slogan: string
+    date: Dayjs
+    rate: number
+    trackers: ITag<boolean>[]
+}
+
 export interface IWeek extends FormWithTasks{
     _id: string
     date: Dayjs

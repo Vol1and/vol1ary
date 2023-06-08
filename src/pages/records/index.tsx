@@ -1,35 +1,33 @@
 import BTable, {ITableColumn} from "@/components/base/BTable/BTable";
 import {GetServerSideProps} from "next";
-import {IRecord, ITracker} from "@/types";
+import {IRecordListElement, ITracker} from "@/types";
 import api from "@/api";
 import React, {useState} from "react";
 import BButton from "@/components/base/BButton/BButton";
 import BIcon from "@/components/base/BIcon/BIcon";
 import Link from "next/link";
 import {ROUTE} from "@/routes";
-import {IRecordRaw} from "@/types/api";
+import {IRecordListElementRaw} from "@/types/api";
 import {RECORD_RATE_LIST} from "@/config/base.config";
 import {notification} from "antd";
 import {useRouter} from "next/router";
 import {parseDate} from "@/utils";
 
 interface Props {
-    itemsRaw: IRecordRaw[]
+    itemsRaw: IRecordListElementRaw[]
     trackers: ITracker[]
 }
 
 const RecordList: React.FC<Props> = ({itemsRaw, trackers}, context) => {
 
-    const [items, setItems] = useState<IRecord[]>(itemsRaw.map((el) => ({
+    const [items, setItems] = useState<IRecordListElement[]>(itemsRaw.map((el) => ({
         ...el,
-        date: parseDate(el.date),
-        wakeTime: parseDate(el.wakeTime),
-        sleepTime: parseDate(el.sleepTime)
+        date: parseDate(el.date)
     })));
 
     const router = useRouter();
 
-    const columns: ITableColumn<IRecord>[] = [
+    const columns: ITableColumn<IRecordListElement>[] = [
         {cellClass: 'max-w-[140px]', label: 'Дата', value: (item) => item.date.format('DD MMMM YY') },
 
         {cellClass: 'max-w-[10px]',  label: 'Оценка', value: (item) => (
@@ -37,8 +35,8 @@ const RecordList: React.FC<Props> = ({itemsRaw, trackers}, context) => {
                 {RECORD_RATE_LIST.find((el => el.value === item.rate))?.label || 'Неопределено'}
             </div>)},
 
-        {cellClass: 'max-w-[550px]', label: 'Описание', value: (item) => item.slogan || item.description},
-        ...trackers.filter((el) => el.isShow).map<ITableColumn<IRecord>>((el) => (
+        {cellClass: 'max-w-[550px]', label: 'Описание', value: (item) => item.slogan || '-'},
+        ...trackers.filter((el) => el.isShow).map<ITableColumn<IRecordListElement>>((el) => (
             {cellClass: 'max-w-[60px]', label: (<BIcon className="m-auto" name={el.slug} />) , value: (item) =>
                     item.trackers.find(track => track.key === el.slug)?.value
                         ? (<BIcon name="faCircleCheck" className="m-auto w-[30px] text-green/70"/>)
@@ -54,9 +52,7 @@ const RecordList: React.FC<Props> = ({itemsRaw, trackers}, context) => {
             const {items: newItems} = await api.record.list()
             setItems(newItems.map((el) => ({
                 ...el,
-                date: parseDate(el.date),
-                wakeTime: parseDate(el.wakeTime),
-                sleepTime: parseDate(el.sleepTime)
+                date: parseDate(el.date)
             })))
         } catch (e) {
             console.log(e)
@@ -64,7 +60,7 @@ const RecordList: React.FC<Props> = ({itemsRaw, trackers}, context) => {
         }
     }
 
-    const editRecord = async (item: IRecord)  => {
+    const editRecord = async (item: IRecordListElement)  => {
         try {
             await router.push(`${ROUTE.RECORDS.slug}/${item._id}`)
         } catch (e) {

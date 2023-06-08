@@ -1,13 +1,13 @@
 import { requestPromise } from '@/utils/request'
-import {IListResponse, IRecordRaw } from "@/types/api";
+import {IListResponse, IRecordListElementRaw } from "@/types/api";
 
 /**
  * Получение списка записей о днях
  * @returns
  */
-export default async (): Promise<IListResponse<IRecordRaw>> => {
+export default async (): Promise<IListResponse<IRecordListElementRaw>> => {
     try {
-        const {data} = await requestPromise<IListResponse<IRecordRaw>>({
+        const {data} = await requestPromise<IListResponse<IRecordListElementRaw>>({
             url: 'record',
             method: 'get'
         })
