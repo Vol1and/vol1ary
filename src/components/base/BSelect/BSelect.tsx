@@ -17,9 +17,9 @@ const BSelect = <T extends FieldValues>(props: Props<T>) => {
 
     return (
         <div className={`relative ${props.className}`}>
-            <label className="b-label">
+            <div className={`b-label ${field.value && `b-label--active`}`}>
                 {props.placeholder}
-            </label>
+            </div>
             <select
                 {...field}
                 {...props}

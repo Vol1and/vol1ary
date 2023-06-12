@@ -25,7 +25,7 @@ const TaskPicker: React.FC<Props<IRecord | IWeek>> = ({control}) => {
 
     return (
         <div className="flex flex-col gap-6">
-            <div className="task-picker card">
+            <div className="task-picker">
                 {
                     fields.map((el: ITask, idx) => (
                         <div key={idx} className={`task-element task-element--${el.status}`}>
@@ -42,18 +42,18 @@ const TaskPicker: React.FC<Props<IRecord | IWeek>> = ({control}) => {
                                     rounded
                                     flat
                                     variant="secondary"
-                                    onClick={() => setStatus('cancelled', idx)}
+                                    onClick={() => setStatus('done', idx)}
                                 >
-                                    <BIcon name={'faXmark'} />
+                                    <BIcon name={'faCheck'} />
                                 </BButton>
                                 <BButton
                                     size="sm"
                                     rounded
                                     flat
                                     variant="secondary"
-                                    onClick={() => setStatus('done', idx)}
+                                    onClick={() => setStatus('cancelled', idx)}
                                 >
-                                    <BIcon name={'faCheck'} />
+                                    <BIcon name={'faXmark'} />
                                 </BButton>
                             </div>
                         </div>

@@ -14,7 +14,7 @@ const BTimePicker = <T extends FieldValues>({timeFormat = 'HH:mm',placeholder = 
 
     return (
         <div className="relative">
-            <div className="b-label">
+            <div className={`b-label ${field.value && `b-label--active`}`}>
                 {placeholder}
             </div>
             <TimePicker

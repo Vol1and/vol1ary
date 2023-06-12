@@ -31,7 +31,7 @@
     }
 
     .toolbar {
-        @apply opacity-0 absolute -left-88 top-0 z-[100] pl-8 flex gap-4;
+        @apply opacity-0 absolute -right-80 top-0 z-[100] pl-8 flex gap-4;
 
         &:hover {
            @apply opacity-100

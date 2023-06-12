@@ -99,16 +99,11 @@ const RecordForm: React.FC<Props> = ({record, trackers}) => {
     return (<div >
             <form className="card form__record min-w-[1600px] -ml-[100px]"  onSubmit={handleSubmit(submit)}>
                 <div className="form__record-body">
-                    <div className="form__record-statuses">
+                    <div className="form__record-left">
                         <BDatePicker control={control} name="date" placeholder="Дата"/>
                         <BTimePicker control={control} name={'wakeTime'} placeholder="Время пробуждения"/>
                         <BTimePicker control={control} name={'sleepTime'} placeholder="Время отхода ко сну"/>
                         <BSelect control={control} name={'rate'} options={RECORD_RATE_LIST} placeholder={"Оценка дня"}/>
-                        <div>
-                            <div className="t-p2">Задания</div>
-                            {/* @ts-ignore */}
-                            <TaskPicker control={control}/>
-                        </div>
                     </div>
                     <div className="w-full">
                         <BInput className="mb-20" name="slogan" control={control} placeholder="Название дню"/>
@@ -120,7 +115,7 @@ const RecordForm: React.FC<Props> = ({record, trackers}) => {
                                    placeholder="Ментальное самочувствие"/>
                     </div>
 
-                    <div className="form__record-statuses">
+                    <div className="form__record-right">
                         {fields.map(((el, idx) => {
                             if (trackers[idx].isShow) {
                                 return (
@@ -129,6 +124,11 @@ const RecordForm: React.FC<Props> = ({record, trackers}) => {
                                 )
                             }
                         }))}
+                        <div>
+                            <div className="t-p2">Задания</div>
+                            {/* @ts-ignore */}
+                            <TaskPicker control={control}/>
+                        </div>
                     </div>
                 </div>
 

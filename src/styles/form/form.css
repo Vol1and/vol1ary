@@ -52,9 +52,12 @@
         @apply flex gap-20 mb-20;
        }
 
-      &-statuses {
-        @apply w-[400px] flex flex-col gap-20;
+      &-left {
+        @apply w-[350px] flex flex-col gap-20;
       }
+      &-right {
+           @apply w-[500px] flex flex-col gap-20;
+       }
       &-textarea {
         @apply min-h-[56px] h-[250px] mb-16;
        }

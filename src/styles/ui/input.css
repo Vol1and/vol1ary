@@ -11,5 +11,10 @@
 }
 
 .b-label {
-    @apply absolute t-p3 left-[10px] -top-10 z-[100] bg-white text-primary/70;
+    @apply absolute z-[5] t-p2 left-10 top-14 text-primary/50 px-4 transition duration-[300];
+
+    &--active {
+         @apply absolute t-p3  bg-white text-primary/60 px-4;
+         transform: translate(-4px, -20px) ;
+    }
 }

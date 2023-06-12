@@ -1,4 +1,4 @@
-import React, {TextareaHTMLAttributes} from "react";
+import React, {TextareaHTMLAttributes, useRef} from "react";
 import {FieldValues, useController, UseControllerProps} from "react-hook-form";
 import classNames from "classnames";
 
@@ -14,16 +14,18 @@ const BTextarea = <T extends FieldValues>({placeholder = '', className = '', ...
 
     const classes = classNames(className, `b-textarea`)
 
+    const inputRef = useRef<HTMLTextAreaElement | null>(null);
+
     return (
-        <div className="w-full relative">
-            <div className="b-label">
+        <div className="w-full relative" onClick={() => inputRef.current?.focus()}>
+            <div className={`b-label ${field.value && `b-label--active`}`}>
                 {placeholder}
             </div>
             <textarea
                 data-testid="textarea"
-                placeholder={placeholder}
                 {...field}
                 {...props}
+                ref={inputRef}
                 className={classes}
             />
         </div>
