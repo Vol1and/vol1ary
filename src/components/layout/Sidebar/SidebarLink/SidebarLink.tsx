@@ -3,7 +3,6 @@ import Link from "next/link";
 import BIcon from "../../..//base/BIcon/BIcon";
 import {useRouter} from "next/router";
 import classNames from "classnames";
-import {IconName} from "@fortawesome/free-solid-svg-icons";
 
 export interface Props extends PropsWithChildren {
     link: string
@@ -20,7 +19,7 @@ const SidebarLink: React.FC<Props>  = ({...props}) => {
         <Link href={props.link} className={classes}>
             <div className="sidebar__item-bar"></div>
             {!!props.icon && <BIcon className="sidebar__item-icon" name={props.icon} />}
-            {props.children}
+            <div className="sidebar__item-title">{props.children}</div>
         </Link>
     )
 }
